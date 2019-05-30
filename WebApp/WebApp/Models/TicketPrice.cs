@@ -8,7 +8,7 @@ namespace WebApp.Models
     public class TicketPrice
     {
         public int Id { get; set; }
-        public int Cena { get; set; }
+        public int Price { get; set; }
         //Mozda treba foreignKey
         public int PricelistId { get; set; }
         public Pricelist Pricelist { get; set; }

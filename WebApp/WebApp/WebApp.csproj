@@ -264,6 +264,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Bus.cs" />
+    <Compile Include="Models\DayType.cs" />
+    <Compile Include="Models\Passenger.cs" />
+    <Compile Include="Models\PassengerType.cs" />
     <Compile Include="Models\Pricelist.cs" />
     <Compile Include="Models\Route.cs" />
     <Compile Include="Models\Station.cs" />
