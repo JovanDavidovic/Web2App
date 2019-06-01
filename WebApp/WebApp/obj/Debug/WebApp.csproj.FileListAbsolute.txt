@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
@@ -147,7 +146,6 @@ D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\bin\Microsoft.Owin.Security.Microsoft
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\bin\System.Web.Http.Owin.xml
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Fakultet\IV\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
-=======
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\bin\WebApp.dll.config
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\bin\WebApp.dll
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\bin\WebApp.pdb
@@ -297,4 +295,3 @@ C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.pdb
 C:\FAX\Godina4\Blok8\Web2App\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
->>>>>>> a6f57c80c34b526f95fd2f34067b3c45aa11825c
