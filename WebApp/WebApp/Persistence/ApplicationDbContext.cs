@@ -20,5 +20,18 @@ namespace WebApp.Persistence
         {
             return new ApplicationDbContext();
         }
+
+
+        public DbSet<Bus> Buses { get; set; }
+        public DbSet<DayType> DayTypes { get; set; }
+        public DbSet<DepartureTime> DepartureTimes { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<PassengerType> PassengerTypes { get; set; }
+        public DbSet<Pricelist> Pricelists { get; set; }
+        public DbSet<Route> Routes { get; set; }
+        public DbSet<Station> Stations { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<TicketPrice> TicketPrices { get; set; }
+        public DbSet<TicketType> TicketTypes { get; set; }
     }
 }
