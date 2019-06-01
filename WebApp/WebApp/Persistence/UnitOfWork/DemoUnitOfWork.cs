@@ -17,6 +17,39 @@ namespace WebApp.Persistence.UnitOfWork
             _context = context;
         }
 
+        [Dependency]
+        public IBusRepository BusRepository { get; set; }
+
+        [Dependency]
+        public IDayTypeRepository DayTypeRepository { get; set; }
+
+        [Dependency]
+        public IDepartureTimeRepository DepartureTimeRepository { get; set; }
+
+        [Dependency]
+        public IPassengerRepository PassengerRepository { get; set; }
+
+        [Dependency]
+        public IPassengerTypeRepository PassengerTypeRepository { get; set; }
+
+        [Dependency]
+        public IPricelistRepository PricelistRepository { get; set; }
+
+        [Dependency]
+        public IRouteRepository RouteRepository { get; set; }
+
+        [Dependency]
+        public IStationRepository StationRepository { get; set; }
+
+        [Dependency]
+        public ITicketPriceRepository TicketPriceRepository { get; set; }
+
+        [Dependency]
+        public ITicketRepository TicketRepository { get; set; }
+
+        [Dependency]
+        public ITicketTypeRepository TicketTypeRepository { get; set; }
+
         public int Complete()
         {
             return _context.SaveChanges();

@@ -285,17 +285,14 @@
     <Compile Include="Persistence\Repository\IPassengerTypeRepository.cs" />
     <Compile Include="Persistence\Repository\IPricelistRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
-<<<<<<< HEAD
     <Compile Include="Persistence\Repository\PassengerRepository.cs" />
     <Compile Include="Persistence\Repository\PassengerTypeRepository.cs" />
     <Compile Include="Persistence\Repository\PricelistRepository.cs" />
-=======
     <Compile Include="Persistence\Repository\IRouteRepository.cs" />
     <Compile Include="Persistence\Repository\IStationRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketPriceRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketTypeRepository.cs" />
->>>>>>> a6f57c80c34b526f95fd2f34067b3c45aa11825c
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\Repository\RouteRepository.cs" />
     <Compile Include="Persistence\Repository\StationRepository.cs" />
