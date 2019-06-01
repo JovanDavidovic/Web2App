@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
 {
-    public class PassengerTypeRepository : Repository<PassengerType, int>, IPassengerRepository
+    public class PassengerTypeRepository : Repository<PassengerType, int>, IPassengerTypeRepository
     {
         public PassengerTypeRepository(DbContext context) : base(context)
         {
