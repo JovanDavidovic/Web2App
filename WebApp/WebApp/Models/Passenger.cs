@@ -7,7 +7,6 @@ namespace WebApp.Models
 {
     public class Passenger : ApplicationUser
     {
-        public int Id { get; set; }
         public string VerificationStatus { get; set; }
         public string Image { get; set; }
 
