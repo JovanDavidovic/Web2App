@@ -1,8 +1,8 @@
 import { ValidatorFn, FormGroup, ValidationErrors } from '@angular/forms';
 
 export const ConfirmPasswordValidator : ValidatorFn = (control: FormGroup) : ValidationErrors | null => {
-    let password = control.get('pass');
-    let confirmPassword = control.get('cpass');
+    let password = control.get('password');
+    let confirmPassword = control.get('confirmPassword');
 
 
     

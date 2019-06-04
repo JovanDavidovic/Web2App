@@ -2,9 +2,9 @@ export class RegistrationModel {
     name : string;
     lastname : string;
     email : string;
-    pass : string;
-    cpass : string;
-    birthday: Date;
+    password : string;
+    confirmPassword : string;
+    birthday: string;
     address: string;
     acctype: string;
 }

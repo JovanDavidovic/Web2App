@@ -20,18 +20,18 @@ export class RegisterComponent implements OnInit {
     email: ['',
       [Validators.required,
       Validators.email]],
-    pass: ['',
+    password: ['',
       [Validators.required,
       Validators.minLength(6),
       Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])/)]],
-    cpass:['',
+    confirmPassword: ['',
       Validators.required],
-    birthday:['',
+    birthday: ['',
       Validators.required],
-    address:['',
+    address: ['',
       Validators.required],
-    acctype:[''],
-  }, {validators: ConfirmPasswordValidator});
+    acctype: [''],
+  }, { validators: ConfirmPasswordValidator });
 
   get regForm() { return this.registerForm.controls; }
 
@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+
     this.reg.register(this.registerForm.value).subscribe(data => {
       this.router.navigate(["login"]);
     },

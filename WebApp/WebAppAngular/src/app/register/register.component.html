@@ -37,28 +37,28 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <input class="input--style-3" type="password" placeholder="Password" formControlName="pass"
+                    <input class="input--style-3" type="password" placeholder="Password" formControlName="password"
                         required>
                 </div>
-                <div *ngIf="regForm.pass.invalid && (regForm.pass.dirty || regForm.pass.touched)"
+                <div *ngIf="regForm.password.invalid && (regForm.password.dirty || regForm.password.touched)"
                     class="alert alert-danger">
-                    <div *ngIf="regForm.pass.errors.required">
+                    <div *ngIf="regForm.password.errors.required">
                         <font size="2" color="white">Password is required.</font>
                     </div>
-                    <div *ngIf="regForm.pass.errors.minlength">
+                    <div *ngIf="regForm.password.errors.minlength">
                         <font size="2" color="white">Password must be at least 6 characters long. </font>
                     </div>
-                    <div *ngIf="regForm.pass.errors.pattern">
+                    <div *ngIf="regForm.password.errors.pattern">
                         <font size="2" color="white">Passwords must have at least one non letter or digit character.
                             Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase
                             ('A'-'Z').</font>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input class="input--style-3" type="password" placeholder="Confirm Password" formControlName="cpass"
+                    <input class="input--style-3" type="password" placeholder="Confirm Password" formControlName="confirmPassword"
                         required>
                 </div>
-                <div *ngIf="registerForm.errors?.doesntMatch && (regForm.cpass.dirty || regForm.cpass.touched)"
+                <div *ngIf="registerForm.errors?.doesntMatch && (regForm.confirmPassword.dirty || regForm.confirmPassword.touched)"
                     class="alert alert-danger">
                     <font size="2" color="white">Passwords do not match.</font>
                 </div>
