@@ -1,0 +1,103 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Registration Info</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="input-group">
+                    <input class="input--style-3" type="text" placeholder="First name" formControlName="name" required>
+                </div>
+                <div *ngIf="regForm.name.invalid && (regForm.name.dirty || regForm.name.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.name.errors.required">
+                        <font size="2" color="white">Name is required.</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3" type="text" placeholder="Last name" formControlName="lastname"
+                        required>
+                </div>
+                <div *ngIf="regForm.lastname.invalid && (regForm.lastname.dirty || regForm.lastname.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.lastname.errors.required">
+                        <font size="2" color="white">Lastname is required.</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3" type="email" placeholder="Email" formControlName="email" required>
+                </div>
+                <div *ngIf="regForm.email.invalid && (regForm.email.dirty || regForm.email.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.email.errors.required">
+                        <font size="2" color="white">Email is required.</font>
+                    </div>
+                    <div *ngIf="regForm.email.errors.email">
+                        <font size="2" color="white"> Please enter valid email address.</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3" type="password" placeholder="Password" formControlName="pass"
+                        required>
+                </div>
+                <div *ngIf="regForm.pass.invalid && (regForm.pass.dirty || regForm.pass.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.pass.errors.required">
+                        <font size="2" color="white">Password is required.</font>
+                    </div>
+                    <div *ngIf="regForm.pass.errors.minlength">
+                        <font size="2" color="white">Password must be at least 6 characters long. </font>
+                    </div>
+                    <div *ngIf="regForm.pass.errors.pattern">
+                        <font size="2" color="white">Passwords must have at least one non letter or digit character.
+                            Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase
+                            ('A'-'Z').</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3" type="password" placeholder="Confirm Password" formControlName="cpass"
+                        required>
+                </div>
+                <div *ngIf="registerForm.errors?.doesntMatch && (regForm.cpass.dirty || regForm.cpass.touched)"
+                    class="alert alert-danger">
+                    <font size="2" color="white">Passwords do not match.</font>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3 js-datepicker" type="date" placeholder="Birthdate"
+                        formControlName="birthday" required>
+                    <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
+                </div>
+                <div *ngIf="regForm.birthday.invalid && (regForm.birthday.dirty || regForm.birthday.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.birthday.errors.required">
+                        <font size="2" color="white">Birthdate is required.</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input class="input--style-3" type="text" placeholder="Address" formControlName="address" required>
+                </div>
+                <div *ngIf="regForm.address.invalid && (regForm.address.dirty || regForm.address.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.address.errors.required">
+                        <font size="2" color="white">Address is required.</font>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="rs-select2 js-select-simple select--no-search">
+                        <font size="3" color="white">Account Type </font>
+                        <select formControlName="acctype" style="background-color: black; color: white">
+                            <option selected="selected">Regular</option>
+                            <option>Student</option>
+                            <option>Pesnioner</option>
+                        </select>
+                        <div class="select-dropdown"></div>
+                    </div>
+                </div>
+                <div class="p-t-10">
+                    <button class="btn btn--pill btn--green" type="submit">Register</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

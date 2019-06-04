@@ -23,9 +23,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/js/main.css",
+              "./node_modules/datepicker/daterangepicker.css",
+              "./node_modules/font-awesome-4.7/css/font-awesome.css",
+              "./node_modules/font-awesome-4.7/css/font-awesome.min.css",
+              "./node_modules/mdi-font/css/material-design-iconic-font.css",
+              "./node_modules/mdi-font/css/material-design-iconic-font.min.css",
+              "./node_modules/select2/select2.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/js/global.js",
+              "./node_modules/datepicker/daterangepicker.js",
+              "./node_modules/datepicker/moment.min.js",
+              "./node_modules/select2/select2.min.js"
+            ]
           },
           "configurations": {
             "production": {

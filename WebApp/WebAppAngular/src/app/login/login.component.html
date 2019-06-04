@@ -1,0 +1,50 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+  <div class="wrapper wrapper--w780">
+    <div class="card card-3">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Log In</h2>
+
+        <form [formGroup]="registerForm" (ngSubmit)="login()">
+          <div class="input-group">
+            <input class="input--style-3" type="email" placeholder="Email" formControlName="mail" required>
+          </div>
+            
+          <div *ngIf="regForm.mail.invalid && (regForm.mail.dirty || regForm.mail.touched)" class="alert alert-danger">
+            <div *ngIf="regForm.mail.errors.required">
+                <font size="2" color="white">Email is required.</font>
+            </div>
+            <div *ngIf="regForm.mail.errors.email">
+                <font size="2" color="white"> Please enter valid email address.</font>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input class="input--style-3" type="password" placeholder="Password" formControlName="pass" required>
+          </div>
+
+          <div *ngIf="regForm.pass.invalid && (regForm.pass.dirty || regForm.pass.touched)" class="alert alert-danger">
+            <div *ngIf="regForm.pass.errors.required">
+                <font size="2" color="white">Password is required.</font>
+            </div>
+            <div *ngIf="regForm.pass.errors.minlength">
+                <font size="2" color="white">Password must be at least 6 characters long. </font>
+            </div>
+            <div *ngIf="regForm.pass.errors.pattern">
+                <font size="2" color="white">Passwords must have at least one non letter or digit character. Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase ('A'-'Z').</font>
+            </div>
+          </div>
+
+
+          <!--<div class="input-group">-->
+            <!--<input class="input--style-3 js-datepicker" type="date" placeholder="Birthdate" name="birthday">-->
+            <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
+          <!--</div>-->
+          <div class="p-t-10">
+            <button class="btn btn--pill btn--green" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
