@@ -10,7 +10,8 @@ namespace WebApp.Models
     {
         [Key]
         public int Number { get; set; }
-        public Tuple<float, float> Coordinates { get; set; }
+        public float CoordinateX { get; set; }
+        public float CoordinateY { get; set; }
 
 
         public int BusRouteId { get; set; }
