@@ -7,18 +7,18 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.AspNetUsers", "Type_Id", "dbo.PassengerTypes");
-            RenameColumn(table: "dbo.AspNetUsers", name: "Type_Id", newName: "TypeId");
-            RenameIndex(table: "dbo.AspNetUsers", name: "IX_Type_Id", newName: "IX_TypeId");
+            //DropForeignKey("dbo.AspNetUsers", "Type_Id", "dbo.PassengerTypes");
+            //RenameColumn(table: "dbo.AspNetUsers", name: "Type_Id", newName: "TypeId");
+            //RenameIndex(table: "dbo.AspNetUsers", name: "IX_Type_Id", newName: "IX_TypeId");
             AddColumn("dbo.Buses", "CoordinateX", c => c.Single(nullable: false));
             AddColumn("dbo.Buses", "CoordinateY", c => c.Single(nullable: false));
             AddColumn("dbo.Stations", "CoordinatesX", c => c.Single(nullable: false));
             AddColumn("dbo.Stations", "CoordinatesY", c => c.Single(nullable: false));
-            AddColumn("dbo.AspNetUsers", "Name", c => c.String());
-            AddColumn("dbo.AspNetUsers", "LastName", c => c.String());
-            AddColumn("dbo.AspNetUsers", "Address", c => c.String());
-            AddColumn("dbo.AspNetUsers", "DateOfBirth", c => c.String());
-            AddForeignKey("dbo.AspNetUsers", "TypeId", "dbo.PassengerTypes", "Id", cascadeDelete: true);
+            //AddColumn("dbo.AspNetUsers", "Name", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "LastName", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "Address", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "DateOfBirth", c => c.String());
+            //AddForeignKey("dbo.AspNetUsers", "TypeId", "dbo.PassengerTypes", "Id", cascadeDelete: true);
         }
         
         public override void Down()

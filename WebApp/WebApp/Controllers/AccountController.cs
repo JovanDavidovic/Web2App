@@ -14,8 +14,10 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
 using WebApp.Results;
+using System.Linq;
 
 namespace WebApp.Controllers
 {
@@ -25,9 +27,12 @@ namespace WebApp.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        
+        IUnitOfWork DataBase { get; set; }
 
-        public AccountController()
+        public AccountController(IUnitOfWork db)
         {
+            DataBase = db;
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -328,7 +333,12 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new Passenger() { Id = model.Email, UserName = model.Username, Name = model.Name, LastName = model.Lastname, Email = model.Email, PasswordHash = Passenger.HashPassword(model.Password), Address = model.Address, DateOfBirth = model.Birthday };
+
+            PassengerType rowInTable = DataBase.PassengerTypeRepository.Find(g => g.Type == "Regular").FirstOrDefault();
+            Passenger user = new Passenger() { Id = model.Email, UserName = model.Username, Name = model.Name, LastName = model.Lastname, Email = model.Email,  Address = model.Address, DateOfBirth = model.Birthday, Type = rowInTable, TypeId = rowInTable.Id, VerificationStatus = "PROCESSING" };
+
+            
+            
             
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -338,6 +348,12 @@ namespace WebApp.Controllers
                 return GetErrorResult(result);
             }
 
+             result = await UserManager.AddToRoleAsync(user.Id, "AppUser");
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
             return Ok();
         }
 
