@@ -43,16 +43,12 @@ namespace WebApp.Models
         public string Lastname { get; set; }
 
         [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-
-        //Ako nesto ne radi ovde je problem -Jovan TODO
-        /*[Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }*/
-
-        
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

@@ -25,6 +25,16 @@
                     </div>
                 </div>
                 <div class="input-group">
+                    <input class="input--style-3" type="text" placeholder="Username" formControlName="username"
+                        required>
+                </div>
+                <div *ngIf="regForm.username.invalid && (regForm.username.dirty || regForm.username.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="regForm.username.errors.required">
+                        <font size="2" color="white">Username is required.</font>
+                    </div>
+                </div>
+                <div class="input-group">
                     <input class="input--style-3" type="email" placeholder="Email" formControlName="email" required>
                 </div>
                 <div *ngIf="regForm.email.invalid && (regForm.email.dirty || regForm.email.touched)"
