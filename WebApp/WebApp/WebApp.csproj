@@ -263,9 +263,13 @@
     <Compile Include="Migrations\201906031045487_OciglednoPrvaMigracija.Designer.cs">
       <DependentUpon>201906031045487_OciglednoPrvaMigracija.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906051333414_Nova polja u Passenger-u.cs" />
-    <Compile Include="Migrations\201906051333414_Nova polja u Passenger-u.Designer.cs">
-      <DependentUpon>201906051333414_Nova polja u Passenger-u.cs</DependentUpon>
+    <Compile Include="Migrations\201906051330578_PassengerStationBus.cs" />
+    <Compile Include="Migrations\201906051330578_PassengerStationBus.Designer.cs">
+      <DependentUpon>201906051330578_PassengerStationBus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906051340367_PassengerStationBus1.cs" />
+    <Compile Include="Migrations\201906051340367_PassengerStationBus1.Designer.cs">
+      <DependentUpon>201906051340367_PassengerStationBus1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -413,8 +417,11 @@
     <EmbeddedResource Include="Migrations\201906031045487_OciglednoPrvaMigracija.resx">
       <DependentUpon>201906031045487_OciglednoPrvaMigracija.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051333414_Nova polja u Passenger-u.resx">
-      <DependentUpon>201906051333414_Nova polja u Passenger-u.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906051330578_PassengerStationBus.resx">
+      <DependentUpon>201906051330578_PassengerStationBus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051340367_PassengerStationBus1.resx">
+      <DependentUpon>201906051340367_PassengerStationBus1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

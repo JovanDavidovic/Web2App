@@ -7,6 +7,7 @@ namespace WebApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using WebApp.Models;
+    using WebApp.Persistence.UnitOfWork;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WebApp.Persistence.ApplicationDbContext>
     {
@@ -64,6 +65,30 @@ namespace WebApp.Migrations
                 var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!") };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
+            }       
+
+            if (!context.PassengerTypes.Any(pt => pt.Type == "Regular"))
+            {
+                var type = new PassengerType() { Id = 1, Type = "Regular", Coefficient = 100 };
+
+                context.PassengerTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.PassengerTypes.Any(pt => pt.Type == "Student"))
+            {
+                var type = new PassengerType() { Id = 2, Type = "Student", Coefficient = 60 };
+
+                context.PassengerTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.PassengerTypes.Any(pt => pt.Type == "Pensioner"))
+            {
+                var type = new PassengerType() { Id = 3, Type = "Pensioner", Coefficient = 70 };
+
+                context.PassengerTypes.Add(type);
+                context.SaveChanges();
             }
         }
     }

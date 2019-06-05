@@ -11,7 +11,8 @@ namespace WebApp.Models
         [Key]
         public String Name { get; set; }
         public String Address { get; set; }
-        public Tuple<float, float> Coordinates { get; set; }
+        public float CoordinatesX { get; set; }
+        public float CoordinatesY { get; set; }
         public List<Route> Routes { get; set; }
     }
 }
