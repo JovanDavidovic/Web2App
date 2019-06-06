@@ -13,12 +13,9 @@ export class LoginComponent implements OnInit {
 
   registerForm = this.fb.group({
     mail: ['',
-      [Validators.required,
-      Validators.email]],
+      [Validators.required]],
     pass: ['',
-      [Validators.required,
-      Validators.minLength(6),
-      Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])/)]],
+      [Validators.required]],
   });
 
   get regForm() { return this.registerForm.controls; }
@@ -35,6 +32,7 @@ export class LoginComponent implements OnInit {
     },
       err => {
         console.log(err);
+        this.router.navigate(["error"]);
       })
 
   }

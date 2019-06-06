@@ -10,11 +10,13 @@ import { HttpService } from './services/http/http.services';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
+  {path:"error", component: ErrorComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
