@@ -11,6 +11,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
+import { ModifyComponent } from './modify/modify.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    ModifyComponent
   ],
   imports: [
     BrowserModule,
