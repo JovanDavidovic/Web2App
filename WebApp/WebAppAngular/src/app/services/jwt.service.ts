@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class JwtService{
     
-    getRole(){
-        let retData = localStorage.jwt;
+    getRole() : string {
+        let retData = localStorage.getItem('jwt');
         let jwtData = retData.split('.')[1];
         let decodedJwtJsonData = window.atob(jwtData);
         let decodedJwtData = JSON.parse(decodedJwtJsonData);  
@@ -14,9 +14,8 @@ export class JwtService{
         return decodedJwtData.role;
     }
 
-    getMail()
-    {
-        let retData = localStorage.jwt;
+    getMail() : string {
+        let retData = localStorage.getItem('jwt');
         let jwtData = retData.split('.')[1];
         let decodedJwtJsonData = window.atob(jwtData);
         let decodedJwtData = JSON.parse(decodedJwtJsonData);  

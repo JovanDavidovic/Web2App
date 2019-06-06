@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:"home", component: HomeComponent},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
+  {path:"modify", component: ModifyComponent},
   {path:"error", component: ErrorComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
