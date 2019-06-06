@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
 
       localStorage.mail = this.registerForm.get("mail").value;
 
-      let retData = data.access_token;
-      let jwtData = retData.split('.')[1];
-      let decodedJwtJsonData = window.atob(jwtData);
-      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+      //let retData = data.access_token;
+      //let jwtData = retData.split('.')[1];
+      //let decodedJwtJsonData = window.atob(jwtData);
+      //let decodedJwtData = JSON.parse(decodedJwtJsonData);
 
-      localStorage.role = decodedJwtData.role;
+      //localStorage.role = decodedJwtData.role;
 
       this.router.navigate(["home"]);
     },
