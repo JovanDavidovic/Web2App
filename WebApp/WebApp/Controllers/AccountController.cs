@@ -335,7 +335,7 @@ namespace WebApp.Controllers
 
 
             PassengerType rowInTable = DataBase.PassengerTypeRepository.Find(g => g.Type == "Regular").FirstOrDefault();
-            Passenger user = new Passenger() { Id = model.Email, UserName = model.Username, Name = model.Name, LastName = model.Lastname, Email = model.Email,  Address = model.Address, DateOfBirth = model.Birthday, Type = rowInTable, TypeId = rowInTable.Id, VerificationStatus = "PROCESSING" };
+            Passenger user = new Passenger() { Id = model.Email, UserName = model.Username, Name = model.Name, LastName = model.Lastname, Email = model.Email,  Address = model.Address, DateOfBirth = model.Birthday, TypeId = rowInTable.Id, VerificationStatus = "PROCESSING" };
 
             
             

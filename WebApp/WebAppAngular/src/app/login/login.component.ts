@@ -31,6 +31,16 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.logIn(this.registerForm.get("mail").value, this.registerForm.get("pass").value).subscribe(data => {
       localStorage.jwt = data.access_token;
+
+      localStorage.mail = this.registerForm.get("mail").value;
+
+      let retData = data.access_token;
+      let jwtData = retData.split('.')[1];
+      let decodedJwtJsonData = window.atob(jwtData);
+      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+      localStorage.role = decodedJwtData.role;
+
       this.router.navigate(["home"]);
     },
       err => {

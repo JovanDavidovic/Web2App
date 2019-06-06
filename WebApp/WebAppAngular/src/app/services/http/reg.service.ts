@@ -8,6 +8,7 @@ export class RegHttpService extends BaseHttpService<any>{
     
     register(registrationModel: RegistrationModel) : Observable<any>{
         this.specificUrl = "/api/Account/Register";
+        //this.specificUrl = "/api/Passengers";  
 
         return super.post(registrationModel);
     }
