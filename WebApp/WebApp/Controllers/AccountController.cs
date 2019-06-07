@@ -427,6 +427,7 @@ namespace WebApp.Controllers
 
 
                         passenger.Image = fileName;
+                        passenger.VerificationStatus = "PROCESSING";
                         DataBase.PassengerRepository.Update(passenger);
                         DataBase.Complete();
 
