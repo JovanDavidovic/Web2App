@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201906051340367_PassengerStationBus1.Designer.cs">
       <DependentUpon>201906051340367_PassengerStationBus1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906071453497_adding Controller.cs" />
+    <Compile Include="Migrations\201906071453497_adding Controller.Designer.cs">
+      <DependentUpon>201906071453497_adding Controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -423,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906051340367_PassengerStationBus1.resx">
       <DependentUpon>201906051340367_PassengerStationBus1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906071453497_adding Controller.resx">
+      <DependentUpon>201906071453497_adding Controller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

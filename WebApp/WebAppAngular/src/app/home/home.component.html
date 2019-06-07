@@ -6,7 +6,8 @@
           <h2 class="title">There is no place like 127.0.0.1</h2>
   
             <nav>
-              <a routerLink="/modify" routerLinkActive="active">Modify account</a>
+              <a routerLink="/modify" routerLinkActive="active" *ngIf="jwt.getRole() == 'AppUser'">Modify account</a>
+              <a routerLink="/validateUsers" routerLinkActive="active" *ngIf="jwt.getRole() == 'Controller'">Validate users</a>
             </nav>
   
         </div>

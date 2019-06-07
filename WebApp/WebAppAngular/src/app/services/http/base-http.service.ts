@@ -13,12 +13,12 @@ export class BaseHttpService<T>{
 
     }
 
-    getAll(): Observable<T[]>{
-        return this.http.get<T[]>(this.baseUrl + this.specificUrl);
+    getAll(): Observable<any>{
+        return this.http.get<any>(this.baseUrl + this.specificUrl);
     }
 
-    getById(id: number): Observable<T>{
-        return this.http.get<T>(this.baseUrl + this.specificUrl + `/${id}`);
+    getById(id: number): Observable<any>{
+        return this.http.get<any>(this.baseUrl + this.specificUrl + `/${id}`);
     }
 
     post(data:any, options?:any): Observable<any> {
