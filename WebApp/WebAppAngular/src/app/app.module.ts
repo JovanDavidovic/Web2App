@@ -14,14 +14,15 @@ import { ErrorComponent } from './error/error.component';
 import { ModifyComponent } from './modify/modify.component';
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { AuthGuard } from './guards/auth.guard';
+import { JwtService } from './services/jwt.service';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
   {path:"modify", component: ModifyComponent},
-  {path:"error", component: ErrorComponent},
-  {path:"uploadPhoto", component: UploadPhotoComponent, canActivate: [AuthGuard]},
+  {path:"error", component: ErrorComponent, canActivate: [AuthGuard]},
+  {path:"uploadPhoto", component: UploadPhotoComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -41,7 +42,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule
   ],
-  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, JwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

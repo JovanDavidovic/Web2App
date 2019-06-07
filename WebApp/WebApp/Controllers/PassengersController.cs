@@ -43,7 +43,7 @@ namespace WebApp.Controllers
         // GET: api/Passengers
         public IQueryable<Passenger> GetUsers()
         {
-            return DB.PassengerRepository.GetAll().AsQueryable();
+            return DB.PassengerRepository.Find(p => p.VerificationStatus == "PROCESSING").AsQueryable();
         }
 
         // GET: api/Passengers/5
