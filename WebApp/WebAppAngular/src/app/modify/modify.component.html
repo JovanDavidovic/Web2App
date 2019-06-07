@@ -53,14 +53,6 @@
                     </div>
                 </div>
                 <div class="input-group">
-                    <input class="input--style-3" type="password" placeholder="Confirm Password" formControlName="confirmPassword"
-                        required>
-                </div>
-                <div *ngIf="modifyForm.errors?.doesntMatch && (modiForm.confirmPassword.dirty || modiForm.confirmPassword.touched)"
-                    class="alert alert-danger">
-                    <font size="2" color="white">Passwords do not match.</font>
-                </div>
-                <div class="input-group">
                     <input class="input--style-3 js-datepicker" type="date" placeholder="Birthdate"
                         formControlName="birthday" required>
                     <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->

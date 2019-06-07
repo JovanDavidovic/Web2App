@@ -30,14 +30,13 @@ export class ModifyComponent implements OnInit {
       [Validators.required,
       Validators.minLength(6),
       Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W])/)]],
-    confirmPassword: ['',
-      Validators.required],
+    confirmPassword: [''],
     birthday: ['',
       Validators.required],
     address: ['',
       Validators.required],
     acctype: [''],
-  }, { validators: ConfirmPasswordValidator });
+  });
 
   get modiForm() { return this.modifyForm.controls; }
 
@@ -75,6 +74,7 @@ export class ModifyComponent implements OnInit {
 
   modify(){
     this.modifyForm.patchValue({email: this.jwt.getMail()})
+    this.modifyForm.patchValue({confirmPassword: this.modifyForm.get("password").value})
     this.modi.modify(this.modifyForm.value).subscribe(data => {
       this.router.navigate(["login"]);
     },
