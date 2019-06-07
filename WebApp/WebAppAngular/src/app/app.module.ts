@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 import { ModifyComponent } from './modify/modify.component';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"register", component: RegisterComponent},
   {path:"modify", component: ModifyComponent},
   {path:"error", component: ErrorComponent},
+  {path:"uploadPhoto", component: UploadPhotoComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -29,7 +31,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
-    ModifyComponent
+    ModifyComponent,
+    UploadPhotoComponent
   ],
   imports: [
     BrowserModule,

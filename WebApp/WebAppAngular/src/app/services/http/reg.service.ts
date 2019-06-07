@@ -8,9 +8,13 @@ export class RegHttpService extends BaseHttpService<any>{
     
     register(registrationModel: RegistrationModel) : Observable<any>{
         this.specificUrl = "/api/Account/Register";
-        //this.specificUrl = "/api/Passengers";  
 
         return super.post(registrationModel);
     }
 
+    uploadPhotoToBackend(data: any, name: string, options?: any) : Observable<any>{
+        this.specificUrl = "/api/Account/UploadPhoto" + name;
+
+        return super.post(data);
+    }
 }

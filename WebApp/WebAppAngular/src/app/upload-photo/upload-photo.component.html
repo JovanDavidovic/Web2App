@@ -1,0 +1,26 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+  <div class="wrapper wrapper--w780">
+    <div class="card card-3">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Uploading photo</h2>
+        <nav>
+          <font size="4" color="white">
+            Please, upload your student ID or pension check ...
+          </font>
+          <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()">
+            <input type="file" formControlName="photo" (change)="onFileSelected($event)" />
+            <br />
+            <div class="p-t-10">
+              <button class="btn btn--pill btn--green" type="submit">Upload</button>
+            </div>
+          </form>
+          <br />
+          <font size="4" color="white">Want to upload photo later?</font>
+          <br />
+          <a routerLink="/login" routerLinkActive="active"><font size="4">Skip</font></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

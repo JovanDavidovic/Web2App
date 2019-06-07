@@ -45,7 +45,12 @@ export class RegisterComponent implements OnInit {
   register() {
 
     this.reg.register(this.registerForm.value).subscribe(data => {
-      this.router.navigate(["login"]);
+      if(this.registerForm.get("acctype").value != "Regular"){
+        this.router.navigate(["uploadPhoto"]);
+      }
+      else{
+        this.router.navigate(["login"]);
+      }
     },
       err => {
         console.log(err);
