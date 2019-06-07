@@ -41,9 +41,11 @@ namespace WebApp.Controllers
         }
 
         // GET: api/Passengers
-        public IQueryable<Passenger> GetUsers()
+        [HttpGet]
+        public IEnumerable<Passenger> GetUsers()
         {
-            return DB.PassengerRepository.Find(p => p.VerificationStatus == "PROCESSING").AsQueryable();
+            var ret = DB.PassengerRepository.Find(p => p.VerificationStatus == "PROCESSING").ToList();
+            return ret;
         }
 
         // GET: api/Passengers/5

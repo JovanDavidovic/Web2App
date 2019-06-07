@@ -15,12 +15,14 @@ export class HomeComponent implements OnInit {
   constructor(private fb: FormBuilder, private modi: ModifyHttpService, private router: Router, private jwt: JwtService) { }
 
   ngOnInit() {
-    this.modi.beforeModify(this.jwt.getMail()).subscribe(data => {
-      if(data.TypeId != 1 && data.Image == null) {
-        localStorage.name = data.UserName;
-        this.router.navigate(["uploadPhoto"]);
-      }
-    })
+    if (this.jwt.getRole() == "AppUser") {
+      this.modi.beforeModify(this.jwt.getMail()).subscribe(data => {
+        if (data.TypeId != 1 && data.Image == null) {
+          localStorage.name = data.UserName;
+          this.router.navigate(["uploadPhoto"]);
+        }
+      })
+    }
   }
 
 }

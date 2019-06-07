@@ -1,0 +1,27 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+  <div class="wrapper wrapper--w780">
+    <div class="card card-3">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Validating users</h2>
+        <table class="validate-users" style="width: 500px" >
+          <ul class="passengers">
+
+            <li *ngFor="let passenger of passengers" [class.selected]="passenger === selectedPassenger"
+              (click)="onSelect(passenger)">
+              <tr>
+                <td>
+                  <font size="4" color="white" class="font">{{passenger.username}}</font>
+                </td>
+                <td >
+                  <font size="4" color="white">{{passenger.role}}</font>
+                </td>
+              </tr>
+            </li>
+
+          </ul>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
