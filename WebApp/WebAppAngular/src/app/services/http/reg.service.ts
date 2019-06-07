@@ -13,7 +13,7 @@ export class RegHttpService extends BaseHttpService<any>{
     }
 
     uploadPhotoToBackend(data: any, name: string, options?: any) : Observable<any>{
-        this.specificUrl = "/api/Account/UploadPhoto" + name;
+        this.specificUrl = "/api/Account/UploadPhoto/" + name;
 
         return super.post(data);
     }

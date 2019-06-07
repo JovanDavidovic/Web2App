@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
 
     this.reg.register(this.registerForm.value).subscribe(data => {
       if(this.registerForm.get("acctype").value != "Regular"){
+        localStorage.name = this.registerForm.get("username").value;
         this.router.navigate(["uploadPhoto"]);
       }
       else{

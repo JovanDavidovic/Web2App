@@ -18,6 +18,7 @@ using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
 using WebApp.Results;
 using System.Linq;
+using System.IO;
 
 namespace WebApp.Controllers
 {
@@ -388,6 +389,62 @@ namespace WebApp.Controllers
                 return GetErrorResult(result); 
             }
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("UploadPhoto/{id}")]
+        [AllowAnonymous]
+        public IHttpActionResult UploadPhoto(string id)
+        {
+            var httpRequest = HttpContext.Current.Request;
+
+            try
+            {
+                if (httpRequest.Files.Count > 0)
+                {
+                    foreach (string file in httpRequest.Files)
+                    {
+
+                        Passenger passenger = DataBase.PassengerRepository.Find(p => p.UserName == id).FirstOrDefault();
+
+                        if (passenger == null)
+                        {
+                            return BadRequest("User does not exists.");
+                        }
+
+                        if (passenger.Image != null)
+                        {
+                            File.Delete(HttpContext.Current.Server.MapPath("~/UploadFile/" + passenger.Image));
+                        }
+
+
+
+                        var postedFile = httpRequest.Files[file];
+                        string fileName = id + "_" + postedFile.FileName;
+                        var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
+
+
+
+
+                        passenger.Image = fileName;
+                        DataBase.PassengerRepository.Update(passenger);
+                        DataBase.Complete();
+
+
+                        postedFile.SaveAs(filePath);
+                    }
+
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
         }
 
         protected override void Dispose(bool disposing)
