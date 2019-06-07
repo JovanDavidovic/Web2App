@@ -5,87 +5,99 @@
             <div class="card-body">
                 <h2 class="title">Modification</h2>
                 <form [formGroup]="modifyForm" (ngSubmit)="modify()">
-                <div class="input-group">
-                    <input class="input--style-3" type="text" placeholder="First name" formControlName="name" required>
-                </div>
-                <div *ngIf="modiForm.name.invalid && (modiForm.name.dirty || modiForm.name.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.name.errors.required">
-                        <font size="2" color="white">Name is required.</font>
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="First name" formControlName="name"
+                            required>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input class="input--style-3" type="text" placeholder="Last name" formControlName="lastname"
-                        required>
-                </div>
-                <div *ngIf="modiForm.lastname.invalid && (modiForm.lastname.dirty || modiForm.lastname.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.lastname.errors.required">
-                        <font size="2" color="white">Lastname is required.</font>
+                    <div *ngIf="modiForm.name.invalid && (modiForm.name.dirty || modiForm.name.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.name.errors.required">
+                            <font size="2" color="white">Name is required.</font>
+                        </div>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input class="input--style-3" type="text" placeholder="Username" formControlName="username"
-                        required>
-                </div>
-                <div *ngIf="modiForm.username.invalid && (modiForm.username.dirty || modiForm.username.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.username.errors.required">
-                        <font size="2" color="white">Username is required.</font>
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="Last name" formControlName="lastname"
+                            required>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input class="input--style-3" type="password" placeholder="Password" formControlName="password"
-                        required>
-                </div>
-                <div *ngIf="modiForm.password.invalid && (modiForm.password.dirty || modiForm.password.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.password.errors.required">
-                        <font size="2" color="white">Password is required.</font>
+                    <div *ngIf="modiForm.lastname.invalid && (modiForm.lastname.dirty || modiForm.lastname.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.lastname.errors.required">
+                            <font size="2" color="white">Lastname is required.</font>
+                        </div>
                     </div>
-                    <div *ngIf="modiForm.password.errors.minlength">
-                        <font size="2" color="white">Password must be at least 6 characters long. </font>
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="Username" formControlName="username"
+                            required>
                     </div>
-                    <div *ngIf="modiForm.password.errors.pattern">
-                        <font size="2" color="white">Passwords must have at least one non letter or digit character.
-                            Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase
-                            ('A'-'Z').</font>
+                    <div *ngIf="modiForm.username.invalid && (modiForm.username.dirty || modiForm.username.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.username.errors.required">
+                            <font size="2" color="white">Username is required.</font>
+                        </div>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input class="input--style-3 js-datepicker" type="date" placeholder="Birthdate"
-                        formControlName="birthday" required>
-                    <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
-                </div>
-                <div *ngIf="modiForm.birthday.invalid && (modiForm.birthday.dirty || modiForm.birthday.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.birthday.errors.required">
-                        <font size="2" color="white">Birthdate is required.</font>
+                    <div class="input-group">
+                        <input class="input--style-3" type="password" placeholder="Password" formControlName="password"
+                            required>
                     </div>
-                </div>
-                <div class="input-group">
-                    <input class="input--style-3" type="text" placeholder="Address" formControlName="address" required>
-                </div>
-                <div *ngIf="modiForm.address.invalid && (modiForm.address.dirty || modiForm.address.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="modiForm.address.errors.required">
-                        <font size="2" color="white">Address is required.</font>
+                    <div *ngIf="modiForm.password.invalid && (modiForm.password.dirty || modiForm.password.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.password.errors.required">
+                            <font size="2" color="white">Password is required.</font>
+                        </div>
+                        <div *ngIf="modiForm.password.errors.minlength">
+                            <font size="2" color="white">Password must be at least 6 characters long. </font>
+                        </div>
+                        <div *ngIf="modiForm.password.errors.pattern">
+                            <font size="2" color="white">Passwords must have at least one non letter or digit character.
+                                Passwords must have at least one digit ('0'-'9'). Passwords must have at least one
+                                uppercase
+                                ('A'-'Z').</font>
+                        </div>
                     </div>
-                </div>
-                <div class="input-group">
-                    <div class="rs-select2 js-select-simple select--no-search">
-                        <font size="3" color="white">Account Type </font>
-                        <select formControlName="acctype" style="background-color: black; color: white">
-                            <option selected="selected">Regular</option>
-                            <option>Student</option>
-                            <option>Pensioner</option>
-                        </select>
-                        <div class="select-dropdown"></div>
+                    <div class="input-group">
+                        <input class="input--style-3 js-datepicker" type="date" placeholder="Birthdate"
+                            formControlName="birthday" required>
+                        <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
                     </div>
-                </div>
-                <div class="p-t-10">
-                    <button class="btn btn--pill btn--green" type="submit" [disabled]="modifyForm.invalid">Modify</button>
-                </div>
+                    <div *ngIf="modiForm.birthday.invalid && (modiForm.birthday.dirty || modiForm.birthday.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.birthday.errors.required">
+                            <font size="2" color="white">Birthdate is required.</font>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="Address" formControlName="address"
+                            required>
+                    </div>
+                    <div *ngIf="modiForm.address.invalid && (modiForm.address.dirty || modiForm.address.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="modiForm.address.errors.required">
+                            <font size="2" color="white">Address is required.</font>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <font size="3" color="white">Account Type </font>
+                            <select formControlName="acctype" style="background-color: black; color: white">
+                                <option selected="selected">Regular</option>
+                                <option>Student</option>
+                                <option>Pensioner</option>
+                            </select>
+                            <div class="select-dropdown"></div>
+                        </div>
+                    </div>
+                    <div class="p-t-10">
+                        <button class="btn btn--pill btn--green" type="submit"
+                            [disabled]="modifyForm.invalid">Modify</button>
+                    </div>
+                    <div>
+                        <nav>
+                            <br />
+                            <a routerLink="/uploadPhoto" routerLinkActive="active">
+                                <font size="4">Modify photo</font>
+                            </a>
+                        </nav>
+                    </div>
                 </form>
             </div>
         </div>

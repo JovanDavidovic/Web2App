@@ -7,7 +7,7 @@
 
         <form [formGroup]="registerForm" (ngSubmit)="login()">
           <div class="input-group">
-            <input class="input--style-3" type="email" placeholder="Email" formControlName="mail" required>
+            <input class="input--style-3" type="email" placeholder="Username" formControlName="mail" required>
           </div>
             
           <div *ngIf="regForm.mail.invalid && (regForm.mail.dirty || regForm.mail.touched)" class="alert alert-danger">

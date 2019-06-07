@@ -53,6 +53,7 @@ export class ModifyComponent implements OnInit {
       this.modifyForm.patchValue({address: data.Address});
       this.modifyForm.patchValue({email: this.jwt.getMail()})
 
+      localStorage.name = data.UserName;
       
       if(data.TypeId == 1)
       {
