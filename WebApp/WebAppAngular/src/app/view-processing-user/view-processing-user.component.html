@@ -15,7 +15,8 @@
             </td>
             <td rowspan="7">
               <div>
-                <img *ngIf="mySrc!=undefined && mySrc!=null; else noImage" [src]="mySrc" style="max-width: 200px; max-height: 200px;">
+                <img *ngIf="mySrc!=undefined && mySrc!=null; else noImage" [src]="mySrc"
+                  style="max-width: 200px; max-height: 200px;">
               </div>
             </td>
           </tr>
@@ -67,17 +68,17 @@
               <font size="4" color="white" class="font">{{proccessingPassenger.acctype}}</font>
             </td>
           </tr>
-
+          <tr></tr>
           <tr>
             <td>
-                <div class="p-t-10">
-                    <button class="btn btn--pill btn--red" type="submit" (click)="DenyValidate()">Deny</button>
-                </div>
+              <div class="p-t-10">
+                <button class="btn btn--pill btn--red" type="submit" (click)="DenyValidate()">Deny</button>
+              </div>
             </td>
             <td>
-                <div class="p-t-10">
-                    <button class="btn btn--pill btn--green" type="submit" (click)="AcceptValidate()">Accept</button>
-                </div>
+              <div class="p-t-10">
+                <button class="btn btn--pill btn--green" type="submit" (click)="AcceptValidate()">Accept</button>
+              </div>
             </td>
           </tr>
         </table>

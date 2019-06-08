@@ -39,6 +39,7 @@ export class ViewProcessingUserComponent implements OnInit {
           this.proccessingPassenger.acctype = "Student";
           this.vali.getPhoto(this.proccessingPassenger.username).subscribe(data2 => {
             this.mySrc = 'data:image/jpeg;base64,' + data2;
+            console.log(data2);
           },
           err => {
             console.log(err);
