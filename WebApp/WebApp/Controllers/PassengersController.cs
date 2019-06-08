@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -222,6 +224,49 @@ namespace WebApp.Controllers
             DB.Complete();
 
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("GetPhoto")]
+        public IHttpActionResult GetPhoto(Passenger passenger)
+        {
+            Passenger picturePassenger = DB.PassengerRepository.Get(passenger.Email);
+
+            if (picturePassenger == null)
+            {
+                picturePassenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
+                if (picturePassenger == null)
+                {
+                    ModelState.AddModelError("", "User not found!");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            if(picturePassenger.Image == null)
+            {
+                ModelState.AddModelError("", "Photo does not exist!");
+                return BadRequest(ModelState);
+            }
+
+            var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + picturePassenger.Image);
+
+            FileInfo fileInfo = new FileInfo(filePath);
+            string type = fileInfo.Extension.Split('.')[1];
+            byte[] data = new byte[fileInfo.Length];
+
+            HttpResponseMessage response = new HttpResponseMessage();
+            using (FileStream fs = fileInfo.OpenRead())
+            {
+                fs.Read(data, 0, data.Length);
+                response.StatusCode = HttpStatusCode.OK;
+                response.Content = new ByteArrayContent(data);
+                response.Content.Headers.ContentLength = data.Length;
+
+            }
+
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/png");
+
+            return Ok(data);
         }
 
         protected override void Dispose(bool disposing)
