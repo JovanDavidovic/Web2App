@@ -178,6 +178,52 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("Deny")]
+        public IHttpActionResult Deny(Passenger passenger)
+        {
+            Passenger deniedPassenger = DB.PassengerRepository.Get(passenger.Email);
+
+            if (deniedPassenger == null)
+            {
+                deniedPassenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
+                if (deniedPassenger == null)
+                {
+                    ModelState.AddModelError("", "User not found!");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            deniedPassenger.VerificationStatus = "DENIED";
+            DB.PassengerRepository.Update(deniedPassenger);
+            DB.Complete();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("Accept")]
+        public IHttpActionResult Accept(Passenger passenger)
+        {
+            Passenger deniedPassenger = DB.PassengerRepository.Get(passenger.Email);
+
+            if (deniedPassenger == null)
+            {
+                deniedPassenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
+                if (deniedPassenger == null)
+                {
+                    ModelState.AddModelError("", "User not found!");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            deniedPassenger.VerificationStatus = "ACCEPTED";
+            DB.PassengerRepository.Update(deniedPassenger);
+            DB.Complete();
+
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
