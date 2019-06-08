@@ -55,7 +55,11 @@ namespace WebApp.Controllers
             Passenger passenger = DB.PassengerRepository.Get(id);
             if (passenger == null)
             {
-                return NotFound();
+                passenger = DB.PassengerRepository.Find(p => p.UserName == id).FirstOrDefault();
+                if (passenger == null)
+                {
+                    return NotFound();
+                }
             }
 
             return Ok(passenger);
@@ -147,8 +151,12 @@ namespace WebApp.Controllers
 
             if (returnPassenger == null)
             {
-                ModelState.AddModelError("", "User not found!");
-                return BadRequest(ModelState);
+                passenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
+                if (returnPassenger == null)
+                {
+                    ModelState.AddModelError("", "User not found!");
+                    return BadRequest(ModelState);
+                }
             }
 
             return Ok(returnPassenger);
