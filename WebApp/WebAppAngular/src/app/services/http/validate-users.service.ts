@@ -21,4 +21,22 @@ export class ValidateUsersService extends BaseHttpService<any>{
 
         return super.post(model);
     }
+
+    DenyValidateToBackend (username: string) : Observable<any> {
+        this.specificUrl = "/api/Passenger/Deny";
+
+        let model = new RegistrationModel();
+        model.username = username;
+
+        return super.post(model);
+    }
+
+    AcceptValidateToBackend (username: string) : Observable<any> {
+        this.specificUrl = "/api/Passenger/Accept";
+
+        let model = new RegistrationModel();
+        model.username = username;
+
+        return super.post(model);
+    }
 }

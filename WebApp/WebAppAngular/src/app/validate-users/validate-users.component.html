@@ -4,23 +4,39 @@
       <div class="card-heading"></div>
       <div class="card-body">
         <h2 class="title">Validating users</h2>
-        <table class="validate-users" style="width: 500px" >
-          <ul class="passengers">
+        <ul class="passengers">
+          <table class="validate-users" style="width: 100%">
+            <tr>
+              <td width="50%">
+                <font size="4" color="white" class="font">Username</font>
+              </td>
+              <td width="50%">
+                <font size="4" color="white">Account type</font>
+              </td>
+            </tr>
+          </table>
 
-            <li *ngFor="let passenger of passengers" [class.selected]="passenger === selectedPassenger"
-              (click)="onSelect(passenger)">
+          <li *ngFor="let passenger of passengers" [class.selected]="passenger === selectedPassenger"
+            (click)="onSelect(passenger)">
+            <table class="validate-users" style="width: 100%">
               <tr>
-                <td>
-                  <font size="4" color="white" class="font">{{passenger.username}}</font>
+                <td width="50%">
+                  <font size="4" color="white">{{passenger.username}}</font>
                 </td>
-                <td >
+                <td width="50%">
                   <font size="4" color="white">{{passenger.role}}</font>
                 </td>
               </tr>
-            </li>
+            </table>
+          </li>
 
-          </ul>
-        </table>
+
+
+        </ul>
+        <br />
+        <nav>
+          <a routerLink="/home" routerLinkActive="active">Home</a>
+        </nav>
       </div>
     </div>
   </div>

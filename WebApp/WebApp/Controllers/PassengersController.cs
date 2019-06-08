@@ -151,7 +151,7 @@ namespace WebApp.Controllers
 
             if (returnPassenger == null)
             {
-                passenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
+                returnPassenger = DB.PassengerRepository.Find(p => p.UserName == passenger.UserName).FirstOrDefault();
                 if (returnPassenger == null)
                 {
                     ModelState.AddModelError("", "User not found!");

@@ -20,6 +20,8 @@ export class ViewProcessingUserComponent implements OnInit {
   ngOnInit() {
       this.vali.getUserByUsername(localStorage.getItem("name")).subscribe(data => {
       
+        this.proccessingPassenger = new WholePassengerModel();
+
         this.proccessingPassenger.name = data.Name;
         this.proccessingPassenger.lastname = data.LastName;
         this.proccessingPassenger.username = data.UserName;
@@ -44,4 +46,17 @@ export class ViewProcessingUserComponent implements OnInit {
     localStorage.name = undefined;
   }
 
+  DenyValidate() {
+    console.log("user denied");
+    this.vali.DenyValidateToBackend(this.proccessingPassenger.username).subscribe(data => {
+      this.router.navigate(["validateUsers"]);
+    });
+  }
+
+  AcceptValidate() {
+    console.log("user accepted");
+    this.vali.AcceptValidateToBackend(this.proccessingPassenger.username).subscribe(data => {
+      this.router.navigate(["validateUsers"]);
+    });
+  }
 }
