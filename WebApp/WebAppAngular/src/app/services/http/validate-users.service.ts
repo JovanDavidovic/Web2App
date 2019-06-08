@@ -13,4 +13,12 @@ export class ValidateUsersService extends BaseHttpService<any>{
         return super.getAll();
     }
 
+    getUserByUsername(username: string) : Observable<any> {
+        this.specificUrl = "/api/Passengers";
+
+        let model = new RegistrationModel();
+        model.username = username;
+
+        return super.post(model);
+    }
 }

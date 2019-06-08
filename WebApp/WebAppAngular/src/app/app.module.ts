@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtService } from './services/jwt.service';
 import { ValidateUsersComponent } from './validate-users/validate-users.component';
 import { ControllerGuard } from './guards/controller.guard';
+import { ViewProcessingUserComponent } from './view-processing-user/view-processing-user.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:"error", component: ErrorComponent},
   {path:"uploadPhoto", component: UploadPhotoComponent},
   {path:"validateUsers", component: ValidateUsersComponent, canActivate: [ControllerGuard]},
+  {path:"viewProcessingUser", component:ViewProcessingUserComponent, canActivate: [ControllerGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -38,7 +40,8 @@ const routes: Routes = [
     ErrorComponent,
     ModifyComponent,
     UploadPhotoComponent,
-    ValidateUsersComponent
+    ValidateUsersComponent,
+    ViewProcessingUserComponent
   ],
   imports: [
     BrowserModule,

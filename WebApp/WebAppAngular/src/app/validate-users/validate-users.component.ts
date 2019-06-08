@@ -43,6 +43,11 @@ export class ValidateUsersComponent implements OnInit {
 
 
   onSelect(passenger: Passenger): void {
+    console.log("selected");
+    
     this.selectedPassenger = passenger;
+    localStorage.name = this.selectedPassenger.username;
+    this.router.navigate(["viewProcessingUser"]);
+    
   }
 }
