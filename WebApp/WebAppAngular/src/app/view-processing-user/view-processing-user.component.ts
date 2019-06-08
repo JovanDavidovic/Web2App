@@ -14,6 +14,7 @@ import { WholePassengerModel } from '../models/whole-passenger-model';
 export class ViewProcessingUserComponent implements OnInit {
 
   proccessingPassenger: WholePassengerModel;
+  mySrc: string;
 
   constructor(private vali: ValidateUsersService, private router: Router, private jwt: JwtService) { }
 
@@ -36,10 +37,22 @@ export class ViewProcessingUserComponent implements OnInit {
         else if(data.TypeId == 2)
         {
           this.proccessingPassenger.acctype = "Student";
+          this.vali.getPhoto(this.proccessingPassenger.username).subscribe(data2 => {
+            this.mySrc = 'data:image/jpeg;base64,' + data2;
+          },
+          err => {
+            console.log(err);
+          });
         }
         else
         {
           this.proccessingPassenger.acctype = "Pensioner";
+          this.vali.getPhoto(this.proccessingPassenger.username).subscribe(data2 => {
+            this.mySrc = 'data:image/jpeg;base64,' + data2;
+          },
+          err => {
+            console.log(err);
+          });
         }
     });
 

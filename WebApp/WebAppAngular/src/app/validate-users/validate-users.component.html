@@ -18,7 +18,7 @@
 
           <li *ngFor="let passenger of passengers" [class.selected]="passenger === selectedPassenger"
             (click)="onSelect(passenger)">
-            <table class="validate-users" style="width: 100%">
+            <table class="validate-users colour-of-row" style="width: 100%">
               <tr>
                 <td width="50%">
                   <font size="4" color="white">{{passenger.username}}</font>

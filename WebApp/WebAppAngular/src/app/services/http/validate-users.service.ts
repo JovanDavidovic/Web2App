@@ -39,4 +39,13 @@ export class ValidateUsersService extends BaseHttpService<any>{
 
         return super.post(model);
     }
+
+    getPhoto (username: string) : Observable<any> {
+        this.specificUrl = "/api/Passengers/GetPhoto";
+
+        let model = new RegistrationModel();
+        model.username = username;
+
+        return super.post(model);
+    }
 }
