@@ -13,6 +13,11 @@
             <td>
               <font size="4" color="white" class="font">{{proccessingPassenger.name}}</font>
             </td>
+            <td rowspan="7">
+              <div>
+                <img *ngIf="mySrc!=undefined && mySrc!=null; else noImage" [src]="mySrc" style="max-width: 200px; max-height: 200px;">
+              </div>
+            </td>
           </tr>
           <tr>
             <td>
