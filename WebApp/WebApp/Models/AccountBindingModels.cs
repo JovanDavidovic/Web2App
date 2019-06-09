@@ -105,4 +105,27 @@ namespace WebApp.Models
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class PricelistBindingModel
+    {
+        [Required]
+        [Display(Name = "From")]
+        public string From { get; set; }
+        [Required]
+        [Display(Name = "To")]
+        public string To { get; set; }
+
+        [Required]
+        [Display(Name = "Hour")]
+        public int Hour { get; set; }
+        [Required]
+        [Display(Name = "Day")]
+        public int Day { get; set; }
+        [Required]
+        [Display(Name = "Month")]
+        public int Month { get; set; }
+        [Required]
+        [Display(Name = "Year")]
+        public int Year { get; set; }
+    }
 }

@@ -252,6 +252,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassengersController.cs" />
+    <Compile Include="Controllers\TicketPricesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -275,6 +276,10 @@
     <Compile Include="Migrations\201906071453497_adding Controller.cs" />
     <Compile Include="Migrations\201906071453497_adding Controller.Designer.cs">
       <DependentUpon>201906071453497_adding Controller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906091526539_TicketPriceRepositoryFixed.cs" />
+    <Compile Include="Migrations\201906091526539_TicketPriceRepositoryFixed.Designer.cs">
+      <DependentUpon>201906091526539_TicketPriceRepositoryFixed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -430,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906071453497_adding Controller.resx">
       <DependentUpon>201906071453497_adding Controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906091526539_TicketPriceRepositoryFixed.resx">
+      <DependentUpon>201906091526539_TicketPriceRepositoryFixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
