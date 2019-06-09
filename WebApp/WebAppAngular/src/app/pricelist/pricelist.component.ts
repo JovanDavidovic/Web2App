@@ -35,7 +35,7 @@ export class PricelistComponent implements OnInit {
 
   formPricelist() {
 
-    this.prc.register(this.pricelistForm.value).subscribe(data => {
+    this.prc.formPricelist(this.pricelistForm.value).subscribe(data => {
       
     },
       err => {
