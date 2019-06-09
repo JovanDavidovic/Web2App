@@ -9,7 +9,6 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         public int Price { get; set; }
-        //Mozda treba foreignKey
         public int PricelistId { get; set; }
         public Pricelist Pricelist { get; set; }
         public int TicketTypeId { get; set; }

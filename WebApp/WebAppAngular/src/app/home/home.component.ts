@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private fb: FormBuilder, private modi: ModifyHttpService, private router: Router, private jwt: JwtService) { }
 
   ngOnInit() {
+    if(!this.jwt.isTokenValid()){
+      localStorage.jwt = undefined;
+    }
     if (this.jwt.getRole() == "AppUser") {
       this.modi.beforeModify(this.jwt.getMail()).subscribe(data => {
         if (data.TypeId != 1 && data.Image == null) {
