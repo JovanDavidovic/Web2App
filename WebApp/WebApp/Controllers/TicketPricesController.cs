@@ -50,7 +50,7 @@ namespace WebApp.Controllers
             foreach (Pricelist p in pricelist)
             {
                 var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == p.Id).ToList();
-                ret.Add(new PricelistBindingModel() { From = p.From.Date.ToString(), To = p.To.Date.ToString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
+                ret.Add(new PricelistBindingModel() { From = p.From.ToShortDateString(), To = p.To.ToShortDateString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
             }
 
             return ret;
