@@ -9,6 +9,8 @@
               <a routerLink="/modify" routerLinkActive="active" *ngIf="jwt.getRole() == 'AppUser'">Modify account</a>
               <a routerLink="/validateUsers" routerLinkActive="active" *ngIf="jwt.getRole() == 'Controller'">Validate users</a>
               <a routerLink="/pricelist" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">Form a pricelist</a>
+              <br/>
+              <a routerLink="/viewPricelists" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">View all pricelists</a>
             </nav>
   
         </div>
