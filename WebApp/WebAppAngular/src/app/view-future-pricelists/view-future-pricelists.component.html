@@ -4,7 +4,7 @@
         <div class="card-heading"></div>
         <div class="card-body">
           <h2 class="title">All future pricelists</h2>
-          <ul class="pricelists">
+          <ul class="futurePricelists">
             <table class="validate-users" style="width: 450px">
               <tr>
                 <td width="20%">
@@ -26,29 +26,34 @@
                   <font size="4" color="white">Year</font>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <br/>
+                </td>
+              </tr>
             </table>
   
             <li *ngFor="let futurePricelist of futurePricelists" [class.selected]="futurePricelist === selectedFuturePricelist"
             (click)="onSelect(futurePricelist)">
-              <table class="view-pricelists colour-of-row" style="width: 450px">
+              <table class="view-futurePricelists colour-of-row" style="width: 450px">
                 <tr>
                   <td width="20%">
-                    <font size="4" color="white">{{pricelist.from}}</font>
+                    <font size="4" color="white">{{futurePricelist.from}}</font>
                   </td>
                   <td width="20%">
-                    <font size="4" color="white">{{pricelist.to}}</font>
+                    <font size="4" color="white">{{futurePricelist.to}}</font>
                   </td>
                   <td width="15%">
-                    <font size="4" color="white">{{pricelist.hour}}</font>
+                    <font size="4" color="white">{{futurePricelist.hour}}</font>
                   </td>
                   <td width="15%">
-                    <font size="4" color="white">{{pricelist.day}}</font>
+                    <font size="4" color="white">{{futurePricelist.day}}</font>
                   </td>
                   <td width="15%">
-                    <font size="4" color="white">{{pricelist.month}}</font>
+                    <font size="4" color="white">{{futurePricelist.month}}</font>
                   </td>
                   <td width="15%">
-                    <font size="4" color="white">{{pricelist.year}}</font>
+                    <font size="4" color="white">{{futurePricelist.year}}</font>
                   </td>
                 </tr>
               </table>
