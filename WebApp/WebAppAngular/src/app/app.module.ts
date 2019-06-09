@@ -19,6 +19,7 @@ import { ValidateUsersComponent } from './validate-users/validate-users.componen
 import { ControllerGuard } from './guards/controller.guard';
 import { ViewProcessingUserComponent } from './view-processing-user/view-processing-user.component';
 import { PricelistComponent } from './pricelist/pricelist.component';
+import { ViewPricelistsComponent } from './view-pricelists/view-pricelists.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path:"validateUsers", component: ValidateUsersComponent, canActivate: [ControllerGuard]},
   {path:"viewProcessingUser", component:ViewProcessingUserComponent, canActivate: [ControllerGuard]},
   {path:"pricelist", component: PricelistComponent, canActivate: [AuthGuard]},
+  {path:"viewPricelists", component: ViewPricelistsComponent, canActivate: [AuthGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -44,7 +46,8 @@ const routes: Routes = [
     UploadPhotoComponent,
     ValidateUsersComponent,
     ViewProcessingUserComponent,
-    PricelistComponent
+    PricelistComponent,
+    ViewPricelistsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@
             <nav>
               <a routerLink="/modify" routerLinkActive="active" *ngIf="jwt.getRole() == 'AppUser'">Modify account</a>
               <a routerLink="/validateUsers" routerLinkActive="active" *ngIf="jwt.getRole() == 'Controller'">Validate users</a>
+              <a routerLink="/pricelist" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">Form a pricelist</a>
             </nav>
   
         </div>

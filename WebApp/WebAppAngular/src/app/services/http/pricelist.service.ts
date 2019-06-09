@@ -12,4 +12,10 @@ export class PricelistService extends BaseHttpService<any>{
 
         return super.post(pricelistModel);
     }
+
+    getAllPricelists() : Observable<any>{
+        this.specificUrl = "/api/TicketPrices";
+
+        return super.getAll();
+    }
 }

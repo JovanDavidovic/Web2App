@@ -16,13 +16,13 @@ export class PricelistComponent implements OnInit {
       [Validators.required]],
     to: ['',
       [Validators.required]],
-    hourPrice: ['',
+    hour: ['',
       [Validators.required]],
-    dayPrice: ['',
+    day: ['',
       [Validators.required]],
-    monthPrice: ['',
+    month: ['',
       Validators.required],
-    yearPrice: ['',
+    year: ['',
       Validators.required],
   });
 
@@ -36,7 +36,7 @@ export class PricelistComponent implements OnInit {
   formPricelist() {
 
     this.prc.formPricelist(this.pricelistForm.value).subscribe(data => {
-      
+      this.router.navigate(["home"]);
     },
       err => {
         console.log(err);
