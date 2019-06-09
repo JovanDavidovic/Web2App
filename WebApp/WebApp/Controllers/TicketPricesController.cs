@@ -42,9 +42,17 @@ namespace WebApp.Controllers
         }
 
         // GET: api/TicketPrices
-        public IEnumerable<TicketPrice> GetTicketPrices()
+        public IEnumerable<PricelistBindingModel> GetTicketPrices()
         {
-            var ret = DB.TicketPriceRepository.GetAll().ToList();
+            List<PricelistBindingModel> ret = new List<PricelistBindingModel>();
+            var pricelist = DB.PricelistRepository.GetAll().ToList();
+
+            foreach (Pricelist p in pricelist)
+            {
+                var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == p.Id).ToList();
+                ret.Add(new PricelistBindingModel() { From = p.From.Date.ToString(), To = p.To.Date.ToString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
+            }
+
             return ret;
         }
 
