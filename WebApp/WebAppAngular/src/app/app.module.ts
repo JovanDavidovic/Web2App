@@ -18,6 +18,7 @@ import { JwtService } from './services/jwt.service';
 import { ValidateUsersComponent } from './validate-users/validate-users.component';
 import { ControllerGuard } from './guards/controller.guard';
 import { ViewProcessingUserComponent } from './view-processing-user/view-processing-user.component';
+import { PricelistComponent } from './pricelist/pricelist.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
     ModifyComponent,
     UploadPhotoComponent,
     ValidateUsersComponent,
-    ViewProcessingUserComponent
+    ViewProcessingUserComponent,
+    PricelistComponent
   ],
   imports: [
     BrowserModule,
