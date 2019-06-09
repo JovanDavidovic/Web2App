@@ -126,6 +126,7 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+
         // DELETE: api/TicketPrices/5
         [ResponseType(typeof(TicketPrice))]
         public IHttpActionResult DeleteTicketPrice(int id)
@@ -140,6 +141,25 @@ namespace WebApp.Controllers
             //db.SaveChanges();
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetTicketPrices")]
+        public IEnumerable<PricelistBindingModel> GetTicketPricesForModification()
+        {
+            List<PricelistBindingModel> ret = new List<PricelistBindingModel>();
+            var pricelist = DB.PricelistRepository.GetAll().ToList();
+
+            foreach (Pricelist p in pricelist)
+            {
+                if (p.From > DateTime.Now)
+                {
+                    var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == p.Id).ToList();
+                    ret.Add(new PricelistBindingModel() { From = p.From.ToShortDateString(), To = p.To.ToShortDateString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
+                }
+            }
+
+            return ret;
         }
 
         protected override void Dispose(bool disposing)
