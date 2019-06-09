@@ -99,6 +99,38 @@ namespace WebApp.Migrations
                 context.PassengerTypes.Add(type);
                 context.SaveChanges();
             }
+
+            if (!context.TicketTypes.Any(pt => pt.Type == "Hour"))
+            {
+                var type = new TicketType() { Id = 1, Type = "Hour" };
+
+                context.TicketTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketTypes.Any(pt => pt.Type == "Day"))
+            {
+                var type = new TicketType() { Id = 2, Type = "Day" };
+
+                context.TicketTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketTypes.Any(pt => pt.Type == "Month"))
+            {
+                var type = new TicketType() { Id = 3, Type = "Month" };
+
+                context.TicketTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketTypes.Any(pt => pt.Type == "Year"))
+            {
+                var type = new TicketType() { Id = 4, Type = "Year"};
+
+                context.TicketTypes.Add(type);
+                context.SaveChanges();
+            }
         }
     }
 }
