@@ -29,6 +29,7 @@ const routes: Routes = [
   {path:"uploadPhoto", component: UploadPhotoComponent},
   {path:"validateUsers", component: ValidateUsersComponent, canActivate: [ControllerGuard]},
   {path:"viewProcessingUser", component:ViewProcessingUserComponent, canActivate: [ControllerGuard]},
+  {path:"pricelist", component: PricelistComponent, canActivate: [AuthGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
