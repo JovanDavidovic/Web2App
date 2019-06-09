@@ -1,0 +1,65 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+      <div class="card card-3">
+        <div class="card-heading"></div>
+        <div class="card-body">
+          <h2 class="title">All future pricelists</h2>
+          <ul class="pricelists">
+            <table class="validate-users" style="width: 450px">
+              <tr>
+                <td width="20%">
+                  <font size="4" color="white">Start</font>
+                </td>
+                <td width="20%">
+                  <font size="4" color="white">End</font>
+                </td>
+                <td width="15%">
+                  <font size="4" color="white">Hour</font>
+                </td>
+                <td width="15%">
+                  <font size="4" color="white">Day</font>
+                </td>
+                <td width="15%">
+                  <font size="4" color="white">Month</font>
+                </td>
+                <td width="15%">
+                  <font size="4" color="white">Year</font>
+                </td>
+              </tr>
+            </table>
+  
+            <li *ngFor="let futurePricelist of futurePricelists" [class.selected]="futurePricelist === selectedFuturePricelist"
+            (click)="onSelect(futurePricelist)">
+              <table class="view-pricelists colour-of-row" style="width: 450px">
+                <tr>
+                  <td width="20%">
+                    <font size="4" color="white">{{pricelist.from}}</font>
+                  </td>
+                  <td width="20%">
+                    <font size="4" color="white">{{pricelist.to}}</font>
+                  </td>
+                  <td width="15%">
+                    <font size="4" color="white">{{pricelist.hour}}</font>
+                  </td>
+                  <td width="15%">
+                    <font size="4" color="white">{{pricelist.day}}</font>
+                  </td>
+                  <td width="15%">
+                    <font size="4" color="white">{{pricelist.month}}</font>
+                  </td>
+                  <td width="15%">
+                    <font size="4" color="white">{{pricelist.year}}</font>
+                  </td>
+                </tr>
+              </table>
+            </li>
+  
+          </ul>
+          <br />
+          <nav>
+            <a routerLink="/home" routerLinkActive="active">Home</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>

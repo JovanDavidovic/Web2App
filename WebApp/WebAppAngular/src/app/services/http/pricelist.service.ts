@@ -18,4 +18,10 @@ export class PricelistService extends BaseHttpService<any>{
 
         return super.getAll();
     }
+
+    getAllFuturePricelists() : Observable<any>{
+        this.specificUrl = "/api/TicketPrice/GetTicketPrices";
+
+        return super.getAll();
+    }
 }
