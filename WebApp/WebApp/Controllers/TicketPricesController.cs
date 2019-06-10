@@ -157,6 +157,79 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+
+        // POST: api/TicketPrices
+        [HttpPost]
+        [Route("ModifyPricelist")]
+        [ResponseType(typeof(TicketPrice))]
+        public IHttpActionResult ModifyPricelist(PricelistWithIdModel pricelist)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+
+            Pricelist plist = new Pricelist() { From = DateTime.ParseExact(pricelist.From, "yyyy-MM-dd", null), To = DateTime.ParseExact(pricelist.To, "yyyy-MM-dd", null) };
+            Pricelist oldPlist = DB.PricelistRepository.Get(pricelist.Id);
+
+            if ((plist.From >= plist.To) || (plist.From < DateTime.Now))
+            {
+                ModelState.AddModelError("", "Invalid time period for pricelist.");
+                return BadRequest(ModelState);
+            }
+
+            var listOfPricelists = DB.PricelistRepository.GetAll().ToList();
+
+            // provera poklapanja sa vec postojecim pricelist-ovima
+            foreach (Pricelist p in listOfPricelists)
+            {
+                if(p.Id == oldPlist.Id)
+                {
+                    continue;
+                }
+
+                if (plist.From >= p.From && plist.From <= p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+
+                if (plist.To >= p.From && plist.To <= p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+
+                if (plist.From < p.From && plist.To > p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+            }
+
+            var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == oldPlist.Id).ToList();
+
+            ticketPrices[0].Price = pricelist.Hour;
+            ticketPrices[1].Price = pricelist.Day;
+            ticketPrices[2].Price = pricelist.Month;
+            ticketPrices[3].Price = pricelist.Year;
+
+            foreach(TicketPrice tp in ticketPrices)
+            {
+                DB.TicketPriceRepository.Update(tp);
+            }
+
+            oldPlist.From = plist.From;
+            oldPlist.To = plist.To;
+
+            DB.PricelistRepository.Update(oldPlist);
+            DB.Complete();
+
+            return Ok();
+        }
+
+
         [HttpGet]
         [Route("GetPricelist/{from}")]
         // GET: api/TicketPrices
@@ -169,7 +242,7 @@ namespace WebApp.Controllers
                 if(p.From.ToShortDateString() == from)
                 {
                     var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == p.Id).ToList();
-                    return Ok(new PricelistBindingModel() { From = p.From.ToShortDateString(), To = p.To.ToShortDateString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
+                    return Ok(new PricelistWithIdModel() { Id = p.Id, From = p.From.ToString("yyyy/MM/dd"), To = p.To.ToString("yyyy/MM/dd"), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
                 }
             }
 

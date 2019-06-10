@@ -128,4 +128,30 @@ namespace WebApp.Models
         [Display(Name = "Year")]
         public int Year { get; set; }
     }
+
+    public class PricelistWithIdModel
+    {
+        [Required]
+        [Display(Name = "Id")]
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "From")]
+        public string From { get; set; }
+        [Required]
+        [Display(Name = "To")]
+        public string To { get; set; }
+
+        [Required]
+        [Display(Name = "Hour")]
+        public int Hour { get; set; }
+        [Required]
+        [Display(Name = "Day")]
+        public int Day { get; set; }
+        [Required]
+        [Display(Name = "Month")]
+        public int Month { get; set; }
+        [Required]
+        [Display(Name = "Year")]
+        public int Year { get; set; }
+    }
 }

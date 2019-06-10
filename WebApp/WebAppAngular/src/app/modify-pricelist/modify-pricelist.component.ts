@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ModifyPricelistComponent implements OnInit {
 
   pricelistForm = this.fb.group({
+    id: [''],
     from: ['',
       [Validators.required]],
     to: ['',
@@ -27,31 +28,39 @@ export class ModifyPricelistComponent implements OnInit {
       Validators.required],
   });
 
+  get prcForm() { return this.pricelistForm.controls; }
+
+
   constructor(private fb: FormBuilder, private prc: PricelistService, private router: Router, private pserv: PricelistModificationService) { }
 
   ngOnInit() {
-    let data = localStorage.getItem("modify");
-    console.log(data);
+
 
     this.prc.getPricelistByDate(localStorage.getItem("modify")).subscribe(data => {
-      this.pricelistForm.patchValue({ from: data.from });
-      this.pricelistForm.patchValue({ to: data.to });
-      this.pricelistForm.patchValue({ hour: data.hour });
-      this.pricelistForm.patchValue({ day: data.day });
-      this.pricelistForm.patchValue({ month: data.month });
-      this.pricelistForm.patchValue({ year: data.year });
+      console.log(data);
+
+      this.pricelistForm.patchValue({ id: data.Id});
+      this.pricelistForm.patchValue({ from: data.From });
+      this.pricelistForm.patchValue({ to: data.To });
+      this.pricelistForm.patchValue({ hour: data.Hour });
+      this.pricelistForm.patchValue({ day: data.Day });
+      this.pricelistForm.patchValue({ month: data.Month });
+      this.pricelistForm.patchValue({ year: data.Year });
     });
 
 
   }
 
-  formPricelist() {
+  modifyPricelist() {
 
-    this.prc.formPricelist(this.pricelistForm.value).subscribe(data => {
+    this.prc.modifyPricelist(this.pricelistForm.value).subscribe(data => {
+      localStorage.modify = undefined;
       this.router.navigate(["home"]);
     },
       err => {
         console.log(err);
+        console.log("AAAAAAAAAAAAAAAA");
+        this.router.navigate(["errorPricelist"]);
       })
   }
 

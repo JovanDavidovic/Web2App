@@ -3,9 +3,9 @@
     <div class="card card-3">
       <div class="card-heading"></div>
       <div class="card-body">
-        <h2 class="title">Form a pricelist</h2>
+        <h2 class="title">Modify pricelist</h2>
 
-        <form [formGroup]="pricelistForm" (ngSubmit)="formPricelist()">
+        <form [formGroup]="pricelistForm" (ngSubmit)="modifyPricelist()">
           <div class="input-group">
             <input class="input--style-3 js-datepicker" type="date" placeholder="From" formControlName="from" required>
             <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
