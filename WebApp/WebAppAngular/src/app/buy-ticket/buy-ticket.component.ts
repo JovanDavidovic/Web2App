@@ -4,6 +4,7 @@ import { JwtService } from '../services/jwt.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BuyTicketModel } from '../models/buy-ticket-model';
+import { TicketPriceModel } from '../models/ticket-price-model';
 
 @Component({
   selector: 'app-buy-ticket',
@@ -13,8 +14,8 @@ import { BuyTicketModel } from '../models/buy-ticket-model';
 })
 export class BuyTicketComponent implements OnInit {
 
-  prices: BuyTicketModel[] = [];
-  selectedPrice: BuyTicketModel = new BuyTicketModel();
+  prices: TicketPriceModel[] = [];
+  selectedPrice: TicketPriceModel = new TicketPriceModel();
 
   constructor(private fb: FormBuilder, private bt: BuyTicketService, private router: Router, private jwt: JwtService) { }
 
@@ -23,11 +24,18 @@ export class BuyTicketComponent implements OnInit {
     this.bt.getPricelist(localStorage.getItem('name')).subscribe(data => {
       console.log(data);
 
-      this.selectedPrice.hour = data.Hour;
-      this.selectedPrice.day = data.Day;
-      this.selectedPrice.month = data.Month;
-      this.selectedPrice.year = data.Year;
+      this.prices.push({ticketType: "Hour", price: data.Hour});
+      this.prices.push({ticketType: "Day", price: data.Day});
+      this.prices.push({ticketType: "Month", price: data.Month});
+      this.prices.push({ticketType: "Year", price: data.Year});
     });
   }
 
+  onSelect(tp: TicketPriceModel): void {
+    console.log("selected");
+
+    this.selectedPrice = tp;
+
+    this.router.navigate(["home"]);
+  }
 }

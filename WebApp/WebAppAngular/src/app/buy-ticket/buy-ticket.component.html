@@ -8,35 +8,11 @@
           <li *ngFor="let price of prices" [class.selected]="price === selectedPrice" (click)="onSelect(price)">
             <table class="view-prices colour-of-row" style="width: 450px">
               <tr>
-                <td>
-                  <font size="4" color="white">Hour ticket price</font>
+                <td width="50%">
+                  <font size="4" color="white">{{price.ticketType}} ticket price</font>
                 </td>
-                <td>
-                  <font size="4" color="white">{{selectedPrice.hour}}</font>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <font size="4" color="white">Day ticket price</font>
-                </td>
-                <td>
-                  <font size="4" color="white">{{selectedPrice.day}}</font>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <font size="4" color="white">Month ticket price</font>
-                </td>
-                <td>
-                  <font size="4" color="white">{{selectedPrice.month}}</font>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <font size="4" color="white">Year ticket price</font>
-                </td>
-                <td>
-                  <font size="4" color="white">{{selectedPrice.year}}</font>
+                <td width="50%">
+                  <font size="4" color="white">{{price.price}}</font>
                 </td>
               </tr>
             </table>
