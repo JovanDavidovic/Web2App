@@ -21,6 +21,7 @@ import { ViewProcessingUserComponent } from './view-processing-user/view-process
 import { PricelistComponent } from './pricelist/pricelist.component';
 import { ViewPricelistsComponent } from './view-pricelists/view-pricelists.component';
 import { ViewFuturePricelistsComponent } from './view-future-pricelists/view-future-pricelists.component';
+import { ModifyPricelistComponent } from './modify-pricelist/modify-pricelist.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:"pricelist", component: PricelistComponent, canActivate: [AuthGuard]},
   {path:"viewPricelists", component: ViewPricelistsComponent, canActivate: [AuthGuard]},
   {path:"viewFuturePricelists", component: ViewFuturePricelistsComponent, canActivate: [AuthGuard]},
+  {path:"modifyPricelist", component: ModifyPricelistComponent, canActivate: [AuthGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -50,7 +52,8 @@ const routes: Routes = [
     ViewProcessingUserComponent,
     PricelistComponent,
     ViewPricelistsComponent,
-    ViewFuturePricelistsComponent
+    ViewFuturePricelistsComponent,
+    ModifyPricelistComponent
   ],
   imports: [
     BrowserModule,

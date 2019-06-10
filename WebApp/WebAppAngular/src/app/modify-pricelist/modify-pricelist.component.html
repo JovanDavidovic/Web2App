@@ -1,0 +1,75 @@
+<div class="page-wrapper bg-gra-01 p-t-100 p-b-100 font-poppins">
+  <div class="wrapper wrapper--w780">
+    <div class="card card-3">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Form a pricelist</h2>
+
+        <form [formGroup]="pricelistForm" (ngSubmit)="formPricelist()">
+          <div class="input-group">
+            <input class="input--style-3 js-datepicker" type="date" placeholder="From" formControlName="from" required>
+            <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
+          </div>
+          <div *ngIf="prcForm.from.invalid && (prcForm.from.dirty || prcForm.from.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.from.errors.required">
+              <font size="2" color="white">Start date is required.</font>
+            </div>
+          </div>
+          <div class="input-group">
+            <input class="input--style-3 js-datepicker" type="date" placeholder="To" formControlName="to" required>
+            <!--<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
+          </div>
+          <div *ngIf="prcForm.to.invalid && (prcForm.to.dirty || prcForm.to.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.to.errors.required">
+              <font size="2" color="white">End date is required.</font>
+            </div>
+          </div>
+
+
+          <div class="input-group">
+            <input class="input--style-3" type="number" placeholder="Hour ticket price" formControlName="hour" required>
+          </div>
+          <div *ngIf="prcForm.hour.invalid && (prcForm.hour.dirty || prcForm.hour.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.hour.errors.required">
+              <font size="2" color="white">Hour ticket price is required.</font>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input class="input--style-3" type="number" placeholder="Day ticket price" formControlName="day" required>
+          </div>
+          <div *ngIf="prcForm.day.invalid && (prcForm.day.dirty || prcForm.day.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.day.errors.required">
+              <font size="2" color="white">Day ticket price is required.</font>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input class="input--style-3" type="number" placeholder="Month ticket price" formControlName="month" required>
+          </div>
+          <div *ngIf="prcForm.month.invalid && (prcForm.month.dirty || prcForm.month.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.month.errors.required">
+              <font size="2" color="white">Month ticket price is required.</font>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input class="input--style-3" type="number" placeholder="Year ticket price" formControlName="year" required>
+          </div>
+          <div *ngIf="prcForm.year.invalid && (prcForm.year.dirty || prcForm.year.touched)" class="alert alert-danger">
+            <div *ngIf="prcForm.year.errors.required">
+              <font size="2" color="white">Year ticket price is required.</font>
+            </div>
+          </div>
+
+
+          <div class="p-t-10">
+              <button class="btn btn--pill btn--green" type="submit"
+                  [disabled]="pricelistForm.invalid">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

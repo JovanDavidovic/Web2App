@@ -21,6 +21,10 @@ export class BaseHttpService<T>{
         return this.http.get<any>(this.baseUrl + this.specificUrl + `/${id}`);
     }
 
+    getByIdString(id: string): Observable<any>{
+        return this.http.get<any>(this.baseUrl + this.specificUrl + id);
+    }
+
     post(data:any, options?:any): Observable<any> {
         return this.http.post(this.baseUrl + this.specificUrl, data, options);
     }
