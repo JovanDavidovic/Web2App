@@ -289,7 +289,7 @@ namespace WebApp.Controllers
         {
             if (disposing)
             {
-                //db.Dispose();
+                DB.Dispose();
             }
             base.Dispose(disposing);
         }
