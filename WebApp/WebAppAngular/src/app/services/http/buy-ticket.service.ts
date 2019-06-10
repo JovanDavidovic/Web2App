@@ -15,4 +15,10 @@ export class BuyTicketService extends BaseHttpService<any>{
         return super.post(model);
     }
 
+    sendTicket(data: any) : Observable<any>{
+        this.specificUrl = "/api/Ticket/BoughtTicket";
+
+        return super.post(data);
+    }
+
 }

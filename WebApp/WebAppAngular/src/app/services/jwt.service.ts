@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 export class JwtService {
 
     getRole(): string {
-        if(localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined)
-        {
+        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined) {
             return "unregistered";
         }
         let retData = localStorage.getItem('jwt');
@@ -19,6 +18,9 @@ export class JwtService {
     }
 
     getMail(): string {
+        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined) {
+            return "mail";
+        }
         let retData = localStorage.getItem('jwt');
         let jwtData = retData.split('.')[1];
         let decodedJwtJsonData = window.atob(jwtData);
@@ -28,18 +30,22 @@ export class JwtService {
     }
 
     isTokenValid(): boolean {
-        if (localStorage.getItem('jwt') != undefined) {
-            let retData = localStorage.getItem('jwt');
-            let jwtData = retData.split('.')[1];
-            let decodedJwtJsonData = window.atob(jwtData);
-            let decodedJwtData = JSON.parse(decodedJwtJsonData)
 
-            if ((new Date().getTime() / 1000) < decodedJwtData.exp) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        if(localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined)
+        {
+            return false;
+        }
+
+        let retData = localStorage.getItem('jwt');
+        let jwtData = retData.split('.')[1];
+        let decodedJwtJsonData = window.atob(jwtData);
+        let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+        if ((new Date().getTime() / 1000) < decodedJwtData.exp) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 

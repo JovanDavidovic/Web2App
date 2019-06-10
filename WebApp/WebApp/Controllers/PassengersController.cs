@@ -146,6 +146,7 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Passengers
+        [AllowAnonymous]
         [ResponseType(typeof(Passenger))]
         public IHttpActionResult PostPassenger(Passenger passenger)
         {
