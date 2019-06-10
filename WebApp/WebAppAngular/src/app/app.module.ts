@@ -23,6 +23,7 @@ import { ViewPricelistsComponent } from './view-pricelists/view-pricelists.compo
 import { ViewFuturePricelistsComponent } from './view-future-pricelists/view-future-pricelists.component';
 import { ModifyPricelistComponent } from './modify-pricelist/modify-pricelist.component';
 import { ErrorPricelistComponent } from './error-pricelist/error-pricelist.component';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:"viewFuturePricelists", component: ViewFuturePricelistsComponent, canActivate: [AuthGuard]},
   {path:"modifyPricelist", component: ModifyPricelistComponent, canActivate: [AuthGuard]},
   {path:"errorPricelist", component: ErrorPricelistComponent, canActivate: [AuthGuard]},
+  {path: "buyTicket", component: BuyTicketComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -56,7 +58,8 @@ const routes: Routes = [
     ViewPricelistsComponent,
     ViewFuturePricelistsComponent,
     ModifyPricelistComponent,
-    ErrorPricelistComponent
+    ErrorPricelistComponent,
+    BuyTicketComponent
   ],
   imports: [
     BrowserModule,

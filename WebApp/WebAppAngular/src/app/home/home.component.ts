@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
     }
     if (this.jwt.getRole() == "AppUser") {
       this.modi.beforeModify(this.jwt.getMail()).subscribe(data => {
+
+        localStorage.name = data.UserName;
+
         if (data.TypeId != 1 && data.Image == null) {
           localStorage.name = data.UserName;
           this.router.navigate(["uploadPhoto"]);

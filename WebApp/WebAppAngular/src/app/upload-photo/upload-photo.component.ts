@@ -39,7 +39,7 @@ export class UploadPhotoComponent implements OnInit {
       formData.append('photo', this.selectedFile, this.selectedFile.name);
 
       this.reg.uploadPhotoToBackend(formData, localStorage.getItem("name"), options).subscribe(data => {
-        localStorage.name = undefined;
+        
         this.router.navigate(["login"]);
       },
         err => {

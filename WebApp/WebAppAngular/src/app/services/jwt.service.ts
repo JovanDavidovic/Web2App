@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
 export class JwtService {
 
     getRole(): string {
+        if(localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined)
+        {
+            return "unregistered";
+        }
         let retData = localStorage.getItem('jwt');
         let jwtData = retData.split('.')[1];
         let decodedJwtJsonData = window.atob(jwtData);
