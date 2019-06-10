@@ -24,4 +24,11 @@ export class PricelistService extends BaseHttpService<any>{
 
         return super.getAll();
     }
+
+    getPricelistByDate(id: string): Observable<any>
+    {
+        this.specificUrl = "/api/TicketPrice/GetPricelist/";
+
+        return super.getByIdString(id);
+    }
 }
