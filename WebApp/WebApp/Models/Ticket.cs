@@ -8,12 +8,14 @@ namespace WebApp.Models
     public class Ticket
     {
         public int Id { get; set; }
-        public int TicketPriceId { get; set; }
-        public TicketPrice TicketPrice { get; set; }
+        public int TicketTypeId { get; set; }
+        public TicketType TicketType { get; set; }
 
-        public int PassengerId { get; set; }
+        public string PassengerId { get; set; }
         public Passenger Passenger { get; set; }
 
         public int TotalPrice { get; set; }
+
+        public DateTime ExpirationDate { get; set; }
     }
 }

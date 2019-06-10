@@ -174,4 +174,19 @@ namespace WebApp.Models
         [Display(Name = "Year")]
         public int Year { get; set; }
     }
+
+    public class BoughtTicketBindingModel
+    {
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
+        [Display(Name = "TicketType")]
+        public string TicketType { get; set; }
+
+        [Required]
+        [Display(Name = "Price")]
+        public int Price { get; set; }
+    }
 }

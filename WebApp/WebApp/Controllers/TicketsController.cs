@@ -160,6 +160,31 @@ namespace WebApp.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("BoughtTicket")]
+        public IHttpActionResult BoughtTicket(BoughtTicketBindingModel ticket)
+        {
+            if (ticket.TicketType == "Hour")
+            {
+                DB.TicketRepository.Add(new Ticket() { PassengerId = DB.PassengerRepository.Find(p => p.UserName == ticket.Username).FirstOrDefault().Id, TicketTypeId = DB.TicketTypeRepository.Find(tt => tt.Type == ticket.TicketType).FirstOrDefault().Id, TotalPrice = ticket.Price, ExpirationDate = DateTime.Now.AddHours(1) });
+            }
+            else if (ticket.TicketType == "Day")
+            {
+                DB.TicketRepository.Add(new Ticket() { PassengerId = DB.PassengerRepository.Find(p => p.UserName == ticket.Username).FirstOrDefault().Id, TicketTypeId = DB.TicketTypeRepository.Find(tt => tt.Type == ticket.TicketType).FirstOrDefault().Id, TotalPrice = ticket.Price, ExpirationDate = DateTime.Now.AddDays(1).Add(new TimeSpan(0, 0, 1)) });
+            }
+            else if (ticket.TicketType == "Month")
+            {
+                DB.TicketRepository.Add(new Ticket() { PassengerId = DB.PassengerRepository.Find(p => p.UserName == ticket.Username).FirstOrDefault().Id, TicketTypeId = DB.TicketTypeRepository.Find(tt => tt.Type == ticket.TicketType).FirstOrDefault().Id, TotalPrice = ticket.Price, ExpirationDate = DateTime.Now.AddMonths(1).Add(new TimeSpan(0, 0, 1)) });
+            }
+            else if (ticket.TicketType == "Year")
+            {
+                DB.TicketRepository.Add(new Ticket() { PassengerId = DB.PassengerRepository.Find(p => p.UserName == ticket.Username).FirstOrDefault().Id, TicketTypeId = DB.TicketTypeRepository.Find(tt => tt.Type == ticket.TicketType).FirstOrDefault().Id, TotalPrice = ticket.Price, ExpirationDate = DateTime.Now.AddYears(1).Add(new TimeSpan(0, 0, 1)) });
+            }
+
+            DB.Complete();
+            return Ok();
+        }
+
         // DELETE: api/Tickets/5
         [ResponseType(typeof(Ticket))]
         public IHttpActionResult DeleteTicket(int id)
