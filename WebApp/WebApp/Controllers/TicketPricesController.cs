@@ -114,6 +114,37 @@ namespace WebApp.Controllers
             }
 
             Pricelist plist = new Pricelist() { From = DateTime.ParseExact(pricelist.From, "yyyy-MM-dd", null), To = DateTime.ParseExact(pricelist.To, "yyyy-MM-dd", null) };
+            
+            if ((plist.From >= plist.To) || (plist.From < DateTime.Now))
+            {
+                ModelState.AddModelError("", "Invalid time period for pricelist.");
+                return BadRequest(ModelState);
+            }
+
+            var listOfPricelists = DB.PricelistRepository.GetAll().ToList();
+
+            // provera poklapanja sa vec postojecim pricelist-ovima
+            foreach (Pricelist p in listOfPricelists)
+            {
+                if(plist.From >= p.From && plist.From <= p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+
+                if(plist.To >= p.From && plist.To <= p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+
+                if(plist.From < p.From && plist.To > p.To)
+                {
+                    ModelState.AddModelError("", "Invalid time period for pricelist.");
+                    return BadRequest(ModelState);
+                }
+            }
+
             DB.PricelistRepository.Add(plist);
 
             DB.TicketPriceRepository.Add(new TicketPrice() { Price = pricelist.Hour, PricelistId = plist.Id, TicketTypeId = 1 });
@@ -126,6 +157,25 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("GetPricelist/{from}")]
+        // GET: api/TicketPrices
+        public IHttpActionResult GetPricelist(string from)
+        {
+            var pricelist = DB.PricelistRepository.GetAll().ToList();
+
+            foreach (Pricelist p in pricelist)
+            {
+                if(p.From.ToShortDateString() == from)
+                {
+                    var ticketPrices = DB.TicketPriceRepository.Find(tp => tp.PricelistId == p.Id).ToList();
+                    return Ok(new PricelistBindingModel() { From = p.From.ToShortDateString(), To = p.To.ToShortDateString(), Hour = ticketPrices[0].Price, Day = ticketPrices[1].Price, Month = ticketPrices[2].Price, Year = ticketPrices[3].Price });
+                }
+            }
+
+            ModelState.AddModelError("", "Cannot find pricelist.");
+            return BadRequest(ModelState);
+        }
 
         // DELETE: api/TicketPrices/5
         [ResponseType(typeof(TicketPrice))]
