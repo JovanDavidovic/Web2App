@@ -131,6 +131,30 @@ namespace WebApp.Migrations
                 context.TicketTypes.Add(type);
                 context.SaveChanges();
             }
+
+            if (!context.DayTypes.Any(pt => pt.Type == "WorkDay"))
+            {
+                var type = new DayType() { Id = 1, Type = "WorkDay" };
+
+                context.DayTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.DayTypes.Any(pt => pt.Type == "Saturday"))
+            {
+                var type = new DayType() { Id = 2, Type = "Saturday" };
+
+                context.DayTypes.Add(type);
+                context.SaveChanges();
+            }
+
+            if (!context.DayTypes.Any(pt => pt.Type == "Sunday"))
+            {
+                var type = new DayType() { Id = 3, Type = "Sunday" };
+
+                context.DayTypes.Add(type);
+                context.SaveChanges();
+            }
         }
     }
 }
