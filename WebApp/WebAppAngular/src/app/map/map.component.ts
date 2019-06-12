@@ -3,12 +3,16 @@ import { MarkerInfo } from './model/marker-info.model';
 import { GeoLocation } from './model/geolocation';
 import { Polyline } from './model/polyline';
 import { RouteModel } from '../models/route-model';
+import { MapService } from '../services/http/map.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
-  styles: ['agm-map {height: 500px; width: 700px;}'] //postavljamo sirinu i visinu mape
+  styles: ['agm-map {height: 500px; width: 700px;}'], //postavljamo sirinu i visinu mape
+  providers: [MapService]
 })
 export class MapComponent implements OnInit {
 
@@ -16,6 +20,13 @@ export class MapComponent implements OnInit {
   public polyline: Polyline;
   public zoom: number;
   stations: RouteModel = new RouteModel();
+
+  addNameForm = this.fb.group({
+    name: ['',
+      [Validators.required]]
+    });
+
+    get routeForm() { return this.addNameForm.controls; }
 
   ngOnInit() {
     this.markerInfo = new MarkerInfo(new GeoLocation(45.242268, 19.842954), 
@@ -25,7 +36,7 @@ export class MapComponent implements OnInit {
       this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
   }
 
-  constructor(private ngZone: NgZone){
+  constructor(private ngZone: NgZone, private fb: FormBuilder, private router: Router, private mapService: MapService){
   }
 
   placeMarker($event){
@@ -34,5 +45,8 @@ export class MapComponent implements OnInit {
     console.log(this.polyline)
   }
 
-
+  createRoute(){
+    this.stations.name = this.addNameForm.get('name').value;
+    this.mapService.createRoute(this.stations);
+  }
 }
