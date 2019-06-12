@@ -141,6 +141,38 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("GetRoutes")]
+        public IHttpActionResult GetRoutes()
+        {
+            List<RouteBindingModel> rbm = new List<RouteBindingModel>();
+            var routes = DB.RouteRepository.GetAll().ToList();
+            foreach (var rt in routes)
+            {
+                rbm.Add(new RouteBindingModel() { Name = rt.Number, RouteStations = rt.Stations });
+            }
+            return Ok(rbm);
+        }
+
+        [HttpGet]
+        [Route("GetRoute/{id}")]
+        public IHttpActionResult GetRoute(int id)
+        {
+            Route route = DB.RouteRepository.Find(r => r.Number == id).FirstOrDefault();
+
+            var stations = route.Stations.Split(':');
+
+            RouteBindingModel rbm = new RouteBindingModel() { Name = route.Number, RouteStations = ""};
+
+            for(int i=1; i<stations.Count(); i++)
+            {
+                var st = DB.StationRepository.Find(s => s.Name == stations[i]).FirstOrDefault();
+                rbm.RouteStations = "-" + st.CoordinatesX.ToString() + ":" + st.CoordinatesY.ToString();
+            }
+
+            return Ok(rbm);
+        }
+
         // DELETE: api/DepartureTimes/5
         [ResponseType(typeof(DepartureTime))]
         public IHttpActionResult DeleteDepartureTime(int id)
