@@ -166,8 +166,9 @@ namespace WebApp.Controllers
 
             for(int i=1; i<stations.Count(); i++)
             {
-                var st = DB.StationRepository.Find(s => s.Name == stations[i]).FirstOrDefault();
-                rbm.RouteStations = "-" + st.CoordinatesX.ToString() + ":" + st.CoordinatesY.ToString();
+                var tmp = stations[i];
+                var st = DB.StationRepository.Find(s => s.Name == tmp).FirstOrDefault();
+                rbm.RouteStations += "-" + st.CoordinatesX.ToString() + ":" + st.CoordinatesY.ToString();
             }
 
             return Ok(rbm);
