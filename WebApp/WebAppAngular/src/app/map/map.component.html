@@ -40,7 +40,7 @@
           </agm-map>
         </p>
         <br />
-        <form [formGroup]="addNameForm" (ngSubmit)="createRoute()">
+        <form [formGroup]="addNameForm" (ngSubmit)="createRoute()" *ngIf="jwt.getRole() == 'Admin'">
             <div class="input-group" style="width: 200px">
                 <input class="input--style-3" type="text" placeholder="Route name" formControlName="name"
                     required>

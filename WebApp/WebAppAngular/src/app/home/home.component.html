@@ -20,7 +20,7 @@
           <a routerLink="/buyTicket" routerLinkActive="active"
             *ngIf="jwt.getRole() != 'Admin' && jwt.getRole() != 'Controller'">Buy ticket</a>
           <br />
-          <a routerLink="/map" routerLinkActive="active">View map</a>
+          <a routerLink="/map" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' || jwt.getRole() == 'AppUser'">Create route</a>
         </nav>
 
       </div>

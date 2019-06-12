@@ -122,7 +122,7 @@ namespace WebApp.Controllers
 
             for (int i = 1; i < stations.Count(); i++)
             {
-                var station = new Station() { Name = "Station" + random.Next(1, 9999).ToString(), CoordinatesX = float.Parse(stations[i].Split(':')[0]), CoordinatesY = float.Parse(stations[i].Split(':')[1]), Address = "Address" }
+                var station = new Station() { Name = "Station" + random.Next(1, 9999).ToString(), CoordinatesX = float.Parse(stations[i].Split(':')[0]), CoordinatesY = float.Parse(stations[i].Split(':')[1]), Address = "Address" };
                 DB.StationRepository.Add(station);
                 if (newRoute.Stations == null)
                 {
@@ -133,6 +133,8 @@ namespace WebApp.Controllers
                     newRoute.Stations += ":" + station.Name;
                 }
             }
+
+            DB.RouteRepository.Add(newRoute);
 
             DB.Complete();
 
