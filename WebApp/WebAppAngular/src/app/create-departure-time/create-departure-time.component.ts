@@ -6,7 +6,8 @@ import { MapService } from '../services/http/map.service';
 @Component({
   selector: 'app-create-departure-time',
   templateUrl: './create-departure-time.component.html',
-  styleUrls: ['./create-departure-time.component.css']
+  styleUrls: ['./create-departure-time.component.css'],
+  providers: [MapService]
 })
 export class CreateDepartureTimeComponent implements OnInit {
 
@@ -24,7 +25,9 @@ export class CreateDepartureTimeComponent implements OnInit {
           Validators.max(59)]],
     dayType: [''],
     routeName: ['']
-  })
+  });
+
+  get createDTForm() { return this.createDepartureTtimeForm.controls; }
 
   constructor(private fb: FormBuilder, private mapService: MapService, private router: Router) { }
 

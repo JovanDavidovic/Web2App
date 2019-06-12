@@ -15,14 +15,26 @@
             <div *ngIf="createDTForm.hour.errors.required">
               <font size="2" color="white">Hours are required.</font>
             </div>
+            <div *ngIf="createDTForm.hour.errors.min">
+              <font size="2" color="white">Hours cannot be lower than 0 !</font>
+            </div>
+            <div *ngIf="createDTForm.hour.errors.max">
+              <font size="2" color="white">Hours cannot be higer than 23 !</font>
+            </div>
           </div>
-          <div class="input-group">
+          <div class="input-group"> 
             <input class="input--style-3" type="number" placeholder="Minute" formControlName="min" required>
           </div>
           <div *ngIf="createDTForm.min.invalid && (createDTForm.min.dirty || createDTForm.min.touched)"
             class="alert alert-danger">
             <div *ngIf="createDTForm.min.errors.required">
               <font size="2" color="white">Minutes are required.</font>
+            </div>
+            <div *ngIf="createDTForm.min.errors.min">
+              <font size="2" color="white">Minutes cannot be lower than 0 !</font>
+            </div>
+            <div *ngIf="createDTForm.min.errors.max">
+              <font size="2" color="white">Minutes cannot be higer than 59 !</font>
             </div>
           </div>
           <div class="input-group">
@@ -41,8 +53,8 @@
             <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
           </select>
           <div class="p-t-10">
-              <button class="btn btn--pill btn--green" type="submit"
-                  [disabled]="createDepartureTtimeForm.invalid">Create</button>
+            <button class="btn btn--pill btn--green" type="submit"
+              [disabled]="createDepartureTtimeForm.invalid">Create</button>
           </div>
         </form>
 

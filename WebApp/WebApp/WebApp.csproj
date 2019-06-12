@@ -295,6 +295,14 @@
     <Compile Include="Migrations\201906111629322_DepartureTimeRoutes.Designer.cs">
       <DependentUpon>201906111629322_DepartureTimeRoutes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906122006304_Route.cs" />
+    <Compile Include="Migrations\201906122006304_Route.Designer.cs">
+      <DependentUpon>201906122006304_Route.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906122019270_Route2.cs" />
+    <Compile Include="Migrations\201906122019270_Route2.Designer.cs">
+      <DependentUpon>201906122019270_Route2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -461,6 +469,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906111629322_DepartureTimeRoutes.resx">
       <DependentUpon>201906111629322_DepartureTimeRoutes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906122006304_Route.resx">
+      <DependentUpon>201906122006304_Route.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906122019270_Route2.resx">
+      <DependentUpon>201906122019270_Route2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
