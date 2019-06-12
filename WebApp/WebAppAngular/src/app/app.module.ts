@@ -26,6 +26,7 @@ import { ModifyPricelistComponent } from './modify-pricelist/modify-pricelist.co
 import { ErrorPricelistComponent } from './error-pricelist/error-pricelist.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MapComponent } from './map/map.component';
+import { CreateDepartureTimeComponent } from './create-departure-time/create-departure-time.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:"errorPricelist", component: ErrorPricelistComponent, canActivate: [AuthGuard]},
   {path: "buyTicket", component: BuyTicketComponent},
   {path: "map", component: MapComponent},
+  {path: "createDepartureTime", component: CreateDepartureTimeComponent, canActivate: [AuthGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -63,7 +65,8 @@ const routes: Routes = [
     ModifyPricelistComponent,
     ErrorPricelistComponent,
     BuyTicketComponent,
-    MapComponent
+    MapComponent,
+    CreateDepartureTimeComponent
   ],
   imports: [
     BrowserModule,

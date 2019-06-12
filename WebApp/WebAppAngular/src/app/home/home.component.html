@@ -7,20 +7,20 @@
 
         <nav>
           <a routerLink="/modify" routerLinkActive="active" *ngIf="jwt.getRole() == 'AppUser'">Modify account</a>
-          <a routerLink="/validateUsers" routerLinkActive="active" *ngIf="jwt.getRole() == 'Controller'">Validate
-            users</a>
+          <br />
+          <a routerLink="/validateUsers" routerLinkActive="active" *ngIf="jwt.getRole() == 'Controller'">Validate users</a>
+          <br />
           <a routerLink="/pricelist" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">Form a pricelist</a>
           <br />
-          <a routerLink="/viewPricelists" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">View all
-            pricelists</a>
+          <a routerLink="/viewPricelists" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">View all pricelists</a>
           <br />
-          <a routerLink="/viewFuturePricelists" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">Modify
-            pricelists</a>
+          <a routerLink="/viewFuturePricelists" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin'">Modify pricelists</a>
           <br />
-          <a routerLink="/buyTicket" routerLinkActive="active"
-            *ngIf="jwt.getRole() != 'Admin' && jwt.getRole() != 'Controller'">Buy ticket</a>
+          <a routerLink="/buyTicket" routerLinkActive="active" *ngIf="jwt.getRole() != 'Admin' && jwt.getRole() != 'Controller'">Buy ticket</a>
           <br />
           <a routerLink="/map" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' || jwt.getRole() == 'AppUser'">Routes</a>
+          <br />
+          <a routerLink="/createDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Create departure time</a>
         </nav>
 
       </div>

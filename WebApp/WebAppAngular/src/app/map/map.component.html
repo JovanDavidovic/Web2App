@@ -57,14 +57,14 @@
         </form>
 
 
-        
+
         <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
-            <font size="3" color="white">Select route </font>
+          <font size="3" color="white">Select route </font>
           <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
             <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
           </select>
           <noscript> <input type="submit" value="Submit"></noscript>
-          </form>
+        </form>
       </div>
     </div>
   </div>
