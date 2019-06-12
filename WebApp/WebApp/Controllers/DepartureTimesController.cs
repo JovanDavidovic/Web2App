@@ -110,6 +110,34 @@ namespace WebApp.Controllers
             return Ok();//CreatedAtRoute("DefaultApi", new { id = departureTime.Id }, departureTime);
         }
 
+        [HttpPost]
+        [Route("AddRoute")]
+        public IHttpActionResult AddRoute(RouteBindingModel route)
+        {
+            var stations = route.RouteStations.Split('-');
+            Route newRoute = new Route() { Number = route.Name };
+
+            var random = new Random();
+
+            for (int i = 1; i < stations.Count(); i++)
+            {
+                var station = new Station() { Name = "Station" + random.Next(1, 9999).ToString(), CoordinatesX = float.Parse(stations[i].Split(':')[0]), CoordinatesY = float.Parse(stations[i].Split(':')[1]), Address = "Address" }
+                DB.StationRepository.Add(station);
+                if (newRoute.Stations == null)
+                {
+                    newRoute.Stations = ":" + station.Name;
+                }
+                else
+                {
+                    newRoute.Stations += ":" + station.Name;
+                }
+            }
+
+            DB.Complete();
+
+            return Ok();
+        }
+
         // DELETE: api/DepartureTimes/5
         [ResponseType(typeof(DepartureTime))]
         public IHttpActionResult DeleteDepartureTime(int id)
