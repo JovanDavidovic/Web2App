@@ -134,6 +134,8 @@ namespace WebApp.Controllers
                 }
             }
 
+            DB.RouteRepository.Add(newRoute);
+
             DB.Complete();
 
             return Ok();
