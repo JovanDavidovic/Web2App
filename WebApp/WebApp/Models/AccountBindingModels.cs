@@ -189,4 +189,15 @@ namespace WebApp.Models
         [Display(Name = "Price")]
         public int Price { get; set; }
     }
+
+    public class RouteBindingModel
+    {
+        [Required]
+        [Display(Name = "Name")]
+        public int Name { get; set; }
+        [Required]
+        [Display(Name = "RouteStations")]
+        public string RouteStations { get; set; }
+        
+    }
 }
