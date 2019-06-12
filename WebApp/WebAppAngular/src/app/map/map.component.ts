@@ -4,7 +4,7 @@ import { GeoLocation } from './model/geolocation';
 import { Polyline } from './model/polyline';
 import { RouteModel } from '../models/route-model';
 import { MapService } from '../services/http/map.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, ControlContainer } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtService } from '../services/jwt.service';
 
@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
   public polyline: Polyline;
   public zoom: number;
   stations: RouteModel = new RouteModel();
+  
 
   addNameForm = this.fb.group({
     name: ['',
