@@ -21,11 +21,15 @@ export class MapComponent implements OnInit {
   public polyline: Polyline;
   public zoom: number;
   stations: RouteModel = new RouteModel();
-  
+  routeNames: string[] = [];
 
   addNameForm = this.fb.group({
     name: ['',
       [Validators.required]]
+  });
+
+  selectRouteForm = this.fb.group({
+    name: ['']
   });
 
   get routeForm() { return this.addNameForm.controls; }
@@ -36,6 +40,17 @@ export class MapComponent implements OnInit {
       "Jugodrvo", "", "http://ftn.uns.ac.rs/691618389/fakultet-tehnickih-nauka");
 
     this.polyline = new Polyline([], 'blue', { url: "assets/busicon.png", scaledSize: { width: 50, height: 50 } });
+  
+    this.mapService.getAllRoutes().subscribe(data => {
+      console.log(data);
+
+      data.forEach(element => {
+
+        this.routeNames.push(element.Name);
+
+      });
+      console.log(this.routeNames);
+    });
   }
 
   constructor(private ngZone: NgZone, private fb: FormBuilder, private router: Router, private mapService: MapService, private jwt: JwtService) {
@@ -47,6 +62,8 @@ export class MapComponent implements OnInit {
       this.stations.routeStations += "-" + $event.coords.lat.toString() + ":" + $event.coords.lng.toString();
       console.log(this.polyline)
     }
+
+
   }
 
   createRoute() {
@@ -55,5 +72,22 @@ export class MapComponent implements OnInit {
       console.log("poslata ruta");
     });
     this.router.navigate(["home"]);
+  }
+
+  selectRoute(name: number) {
+    console.log(name);
+    this.mapService.sendSelectedRoute(name).subscribe(data => {
+      console.log(data);
+
+      this.polyline = new Polyline([], 'blue', { url: "assets/busicon.png", scaledSize: { width: 50, height: 50 } });
+
+      let coordinates = data.RouteStations.split("-");
+      coordinates.forEach(element => {
+        if(element != "") {
+          this.polyline.addLocation(new GeoLocation(+(element.split(":")[0]), +(element.split(":")[1])));
+        }
+      });
+      
+    });
   }
 }

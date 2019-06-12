@@ -12,5 +12,15 @@ export class MapService extends BaseHttpService<any>{
         return super.post(stations);
     }
 
+    getAllRoutes() : Observable<any>{
+        this.specificUrl = "/api/DepartureTime/GetRoutes";
 
+        return super.getAll();
+    }
+
+    sendSelectedRoute(routeName: number) {
+        this.specificUrl = "/api/DepartureTime/GetRoute";
+
+        return super.getById(routeName);
+    }
 }

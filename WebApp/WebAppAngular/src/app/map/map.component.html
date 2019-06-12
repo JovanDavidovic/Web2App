@@ -41,22 +41,30 @@
         </p>
         <br />
         <form [formGroup]="addNameForm" (ngSubmit)="createRoute()" *ngIf="jwt.getRole() == 'Admin'">
-            <div class="input-group" style="width: 200px">
-                <input class="input--style-3" type="text" placeholder="Route name" formControlName="name"
-                    required>
+          <div class="input-group" style="width: 200px">
+            <input class="input--style-3" type="text" placeholder="Route name" formControlName="name" required>
+          </div>
+          <div *ngIf="routeForm.name.invalid && (routeForm.name.dirty || routeForm.name.touched)"
+            class="alert alert-danger">
+            <div *ngIf="routeForm.name.errors.required">
+              <font size="2" color="white">Name is required.</font>
             </div>
-            <div *ngIf="routeForm.name.invalid && (routeForm.name.dirty || routeForm.name.touched)"
-                class="alert alert-danger">
-                <div *ngIf="routeForm.name.errors.required">
-                    <font size="2" color="white">Name is required.</font>
-                </div>
-            </div>
+          </div>
           <div class="p-t-10">
             <button class="btn btn--pill btn--green" type="submit" [disabled]="addNameForm.invalid">Create
               route</button>
           </div>
         </form>
 
+
+        
+        <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
+            <font size="3" color="white">Select route </font>
+          <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
+            <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
+          </select>
+          <noscript> <input type="submit" value="Submit"></noscript>
+          </form>
       </div>
     </div>
   </div>
