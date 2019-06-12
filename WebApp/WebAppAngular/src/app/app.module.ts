@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
@@ -24,6 +25,7 @@ import { ViewFuturePricelistsComponent } from './view-future-pricelists/view-fut
 import { ModifyPricelistComponent } from './modify-pricelist/modify-pricelist.component';
 import { ErrorPricelistComponent } from './error-pricelist/error-pricelist.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -40,6 +42,7 @@ const routes: Routes = [
   {path:"modifyPricelist", component: ModifyPricelistComponent, canActivate: [AuthGuard]},
   {path:"errorPricelist", component: ErrorPricelistComponent, canActivate: [AuthGuard]},
   {path: "buyTicket", component: BuyTicketComponent},
+  {path: "map", component: MapComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -59,13 +62,15 @@ const routes: Routes = [
     ViewFuturePricelistsComponent,
     ModifyPricelistComponent,
     ErrorPricelistComponent,
-    BuyTicketComponent
+    BuyTicketComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'})
   ],
   providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, JwtService],
   bootstrap: [AppComponent]
