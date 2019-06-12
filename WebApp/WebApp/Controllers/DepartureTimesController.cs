@@ -98,17 +98,27 @@ namespace WebApp.Controllers
 
         // POST: api/DepartureTimes
         [ResponseType(typeof(DepartureTime))]
-        public IHttpActionResult PostDepartureTime(DepartureTime departureTime)
+        public IHttpActionResult PostDepartureTime(DepartureTimeBindingModel departureTime)
         {
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            string time = departureTime.Hour.ToString() + ":" + departureTime.Min.ToString();
+            int id = DB.DayTypeRepository.Find(d => d.Type == departureTime.DayType).FirstOrDefault().Id;
+            DepartureTime departure = DB.DepartureTimeRepository.Find(dt => dt.Time == time && dt.DayTypeId == id).FirstOrDefault();
 
-        //    db.DepartureTimes.Add(departureTime);
-        //    db.SaveChanges();
+            if (departure == null)
+            {
+                departure = new DepartureTime() { Time = time, DayTypeId = DB.DayTypeRepository.Find(d => d.Type == departureTime.DayType).FirstOrDefault().Id };
+                departure.Routes = departureTime.RouteName.ToString();
+                DB.DepartureTimeRepository.Add(departure);
+            }
+            else
+            {
+                departure.Routes += "," + departureTime.RouteName.ToString();
+                DB.DepartureTimeRepository.Update(departure);
+            }
 
-            return Ok();//CreatedAtRoute("DefaultApi", new { id = departureTime.Id }, departureTime);
+            DB.Complete();
+
+            return Ok();
         }
 
         [HttpPost]

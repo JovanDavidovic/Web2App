@@ -200,4 +200,20 @@ namespace WebApp.Models
         public string RouteStations { get; set; }
         
     }
+
+    public class DepartureTimeBindingModel
+    {
+        [Required]
+        [Display(Name = "Hour")]
+        public int Hour { get; set; }
+        [Required]
+        [Display(Name = "Min")]
+        public int Min { get; set; }
+        [Required]
+        [Display(Name = "DayType")]
+        public string DayType { get; set; }
+        [Required]
+        [Display(Name = "RouteName")]
+        public int RouteName { get; set; }
+    }
 }
