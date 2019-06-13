@@ -29,6 +29,7 @@ import { MapComponent } from './map/map.component';
 import { CreateDepartureTimeComponent } from './create-departure-time/create-departure-time.component';
 import { ViewDepartureTimeComponent } from './view-departure-time/view-departure-time.component';
 import { DeleteDepartureTimeComponent } from './delete-departure-time/delete-departure-time.component';
+import { InputMailComponent } from './input-mail/input-mail.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -72,7 +73,8 @@ const routes: Routes = [
     MapComponent,
     CreateDepartureTimeComponent,
     ViewDepartureTimeComponent,
-    DeleteDepartureTimeComponent
+    DeleteDepartureTimeComponent,
+    InputMailComponent
   ],
   imports: [
     BrowserModule,

@@ -45,4 +45,10 @@ export class MapService extends BaseHttpService<any>{
 
         return super.post(model);
     }
+
+    sendMail(email: string) : Observable<any> {
+        this.specificUrl = "/api/DepartureTime/SendMail";
+
+        return super.post(email);
+    }
 }
