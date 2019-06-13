@@ -46,12 +46,12 @@ export class MapService extends BaseHttpService<any>{
         return super.post(model);
     }
 
-    deleteRoute(routeId: string) : Observable<any> {
-        this.specificUrl = "/api/DepartureTime/DeleteRoute/" + routeId;
+    deleteRoute(routeId: number) : Observable<any> {
+        this.specificUrl = "/api/DepartureTime/DeleteRoute/" + routeId.toString();
 
         return super.post(+(routeId));
     }
-    
+
     sendMail(email: string) : Observable<any> {
         this.specificUrl = "/api/DepartureTime/SendMail";
 

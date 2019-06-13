@@ -285,7 +285,8 @@ namespace WebApp.Controllers
 
             for(int i=1; i<stations.Count(); i++)
             {
-                var station = DB.StationRepository.Find(s => s.Name == stations[i]).FirstOrDefault();
+                var st = stations[i];
+                var station = DB.StationRepository.Find(s => s.Name == st).FirstOrDefault();
                 DB.StationRepository.Remove(station);
             }
 
@@ -296,6 +297,7 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("SendMail")]
         public IHttpActionResult SendMail(string email)

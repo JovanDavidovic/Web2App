@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { JwtService } from '../services/jwt.service';
 import { MapService } from '../services/http/map.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class DeleteRouteComponent implements OnInit {
   public zoom: number;
   routeNames: string[] = [];
   routeName: string;
+  tmp: number;
 
   selectRouteForm = this.fb.group({
     name: ['']
@@ -58,6 +59,7 @@ export class DeleteRouteComponent implements OnInit {
 
   selectRoute(name: number) {
     console.log(name);
+    this.tmp = name
     this.mapService.sendSelectedRoute(name).subscribe(data => {
       console.log(data);
 
@@ -74,7 +76,8 @@ export class DeleteRouteComponent implements OnInit {
   }
 
   deleteRoute() {
-    this.mapService.deleteRoute(this.selectRouteForm.get('name').value).subscribe(data => {
+    console.log(this.tmp);
+    this.mapService.deleteRoute(this.tmp).subscribe(data => {
       this.router.navigate(["home"]);
     });
   }

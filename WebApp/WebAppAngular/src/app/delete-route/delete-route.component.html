@@ -45,11 +45,12 @@
             <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
           </select>
           <noscript> <input type="submit" value="Submit"></noscript>
+
+          <div class="p-t-10">
+            <button class="btn btn--pill btn--green" type="submit">Delete</button>
+          </div>
         </form>
-        <div class="p-t-10">
-          <button class="btn btn--pill btn--green" type="submit"
-              [disabled]="selectRouteForm.invalid">Delete</button>
-      </div>
+
 
       </div>
     </div>

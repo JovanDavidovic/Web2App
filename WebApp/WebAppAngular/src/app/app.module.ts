@@ -48,6 +48,7 @@ const routes: Routes = [
   {path:"errorPricelist", component: ErrorPricelistComponent, canActivate: [AuthGuard]},
   {path: "buyTicket", component: BuyTicketComponent},
   {path: "map", component: MapComponent},
+  {path: "inputMail", component: InputMailComponent},
   {path: "createDepartureTime", component: CreateDepartureTimeComponent, canActivate: [AuthGuard]},
   {path: "viewDepartureTime", component: ViewDepartureTimeComponent},
   {path: "deleteDepartureTime", component: DeleteDepartureTimeComponent, canActivate: [AuthGuard]},
