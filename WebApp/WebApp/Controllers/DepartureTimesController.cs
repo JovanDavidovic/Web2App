@@ -126,7 +126,7 @@ namespace WebApp.Controllers
         public IHttpActionResult AddRoute(RouteBindingModel route)
         {
             var stations = route.RouteStations.Split('-');
-            Route newRoute = new Route() { RouteId = route.Name };
+            Route newRoute = new Route() { RouteId = route.Name, Area = route.Area };
 
             var random = new Random();
 
@@ -154,14 +154,17 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
-        [Route("GetRoutes")]
-        public IHttpActionResult GetRoutes()
+        [Route("GetRoutes/{id}")]
+        public IHttpActionResult GetRoutes(string id)
         {
             List<RouteBindingModel> rbm = new List<RouteBindingModel>();
             var routes = DB.RouteRepository.GetAll().ToList();
             foreach (var rt in routes)
             {
-                rbm.Add(new RouteBindingModel() { Name = rt.RouteId, RouteStations = rt.Stations });
+                if (rt.Area == id)
+                {
+                    rbm.Add(new RouteBindingModel() { Name = rt.RouteId, RouteStations = rt.Stations });
+                }
             }
             return Ok(rbm);
         }

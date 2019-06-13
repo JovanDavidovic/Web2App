@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201906122019270_Route2.Designer.cs">
       <DependentUpon>201906122019270_Route2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906131305256_RouteArea.cs" />
+    <Compile Include="Migrations\201906131305256_RouteArea.Designer.cs">
+      <DependentUpon>201906131305256_RouteArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -475,6 +479,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906122019270_Route2.resx">
       <DependentUpon>201906122019270_Route2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131305256_RouteArea.resx">
+      <DependentUpon>201906131305256_RouteArea.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

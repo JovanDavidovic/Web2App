@@ -13,5 +13,7 @@ namespace WebApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RouteId { get; set; }
         public string Stations { get; set; }
+
+        public string Area { get; set; }
     }
 }

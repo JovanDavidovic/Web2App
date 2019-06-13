@@ -198,7 +198,10 @@ namespace WebApp.Models
         [Required]
         [Display(Name = "RouteStations")]
         public string RouteStations { get; set; }
-        
+        [Required]
+        [Display(Name = "Area")]
+        public string Area { get; set; }
+
     }
 
     public class DepartureTimeBindingModel
