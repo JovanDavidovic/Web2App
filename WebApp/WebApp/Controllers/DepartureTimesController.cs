@@ -213,7 +213,7 @@ namespace WebApp.Controllers
 
                     foreach (var rt in routes)
                     {
-                        if (DB.RouteRepository.Find(r => r.RouteId.ToString() == rt).FirstOrDefault() != null)
+                        if (rt == model.Id.ToString())
                         {
                             ret += "," + dt.Time;
                             break;

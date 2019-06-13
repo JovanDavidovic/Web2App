@@ -46,7 +46,7 @@ const routes: Routes = [
   {path: "buyTicket", component: BuyTicketComponent},
   {path: "map", component: MapComponent},
   {path: "createDepartureTime", component: CreateDepartureTimeComponent, canActivate: [AuthGuard]},
-  {path: "viewDepartureTime", component: ViewDepartureTimeComponent}
+  {path: "viewDepartureTime", component: ViewDepartureTimeComponent},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 

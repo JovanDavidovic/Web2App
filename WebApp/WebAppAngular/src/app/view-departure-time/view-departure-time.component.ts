@@ -13,6 +13,8 @@ import { JwtService } from '../services/jwt.service';
 export class ViewDepartureTimeComponent implements OnInit {
 
   routeNames: string[] = [];
+  departureTimes: string[] = [];
+
 
   viewRoutesForm = this.fb.group({
     area: ['',
@@ -35,6 +37,9 @@ export class ViewDepartureTimeComponent implements OnInit {
   }
 
   selectArea(name: string) {
+
+    this.routeNames = [];
+
     this.mapService.getAllRoutes(name).subscribe(data => {
       console.log(data);
 
@@ -47,8 +52,18 @@ export class ViewDepartureTimeComponent implements OnInit {
   }
 
   viewDepTimes() {
+
+    this.departureTimes = [];
+
     this.mapService.sendRoutForDepartureTimes(this.viewDepTimesForm.value).subscribe(data => {
       console.log(data);
+
+      let times = data.split(",");
+      times.forEach(element => {
+        if(element != "") {
+          this.departureTimes.push(element);
+        }
+      });
     });
   }
 }

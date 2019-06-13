@@ -20,6 +20,8 @@
           <br />
           <a routerLink="/map" routerLinkActive="active" *ngIf="jwt.getRole() != 'Controller'">Routes</a>
           <br />
+          <a routerLink="/viewDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() != 'Controller'">View departure time</a>
+          <br />
           <a routerLink="/createDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Create departure time</a>
         </nav>
 
