@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthHttpService } from '../services/http/auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JwtService } from '../services/jwt.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private auth: AuthHttpService, private router: Router) { }
 
   ngOnInit() {
+    localStorage.jwt = undefined;
   }
 
   login() {

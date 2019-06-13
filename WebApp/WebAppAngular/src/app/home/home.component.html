@@ -25,6 +25,9 @@
           <a routerLink="/createDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Create departure time</a>
           <br />
           <a routerLink="/deleteDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Delete departure time</a>
+        
+          <br /><br /><br />
+          <a routerLink="/login" routerLinkActive="active" *ngIf="jwt.getRole() != 'unregistered' ">Log out</a>
         </nav>
 
       </div>
