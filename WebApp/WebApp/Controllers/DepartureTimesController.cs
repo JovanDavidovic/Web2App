@@ -198,8 +198,8 @@ namespace WebApp.Controllers
             return Ok(rbm);
         }
 
-        [HttpGet]
-        [Route("GetExactDepartureTime/{id}")]
+        [HttpPost]
+        [Route("GetExactDepartureTime")]
         public IHttpActionResult GetExactDepartureTime(GetDepartureTimeBindingModel model)
         {
             var departureTimes = DB.DepartureTimeRepository.GetAll();
