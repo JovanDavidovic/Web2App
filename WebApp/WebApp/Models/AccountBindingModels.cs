@@ -230,4 +230,18 @@ namespace WebApp.Models
         public string DayType { get; set; }
 
     }
+
+    public class DeleteDepartureTimeBindingModel
+    {
+        [Required]
+        [Display(Name = "Id")]
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "DayType")]
+        public string DayType { get; set; }
+        [Required]
+        [Display(Name = "Time")]
+        public string Time { get; set; }
+
+    }
 }

@@ -225,6 +225,43 @@ namespace WebApp.Controllers
             return Ok(ret);
         }
 
+        [HttpPost]
+        [Route("DeleteDepartureTime")]
+        public IHttpActionResult DeleteDepartureTime(DeleteDepartureTimeBindingModel model)
+        {
+
+            var departureTimes = DB.DepartureTimeRepository.GetAll();
+            
+
+            foreach (DepartureTime dt in departureTimes)
+            {
+                string ret = "";
+                if (dt.Time == model.Time)
+                {
+                    if (DB.DayTypeRepository.Get(dt.DayTypeId).Type == model.DayType)
+                    {
+                        var routes = dt.Routes.Split(',');
+
+                        foreach (var rt in routes)
+                        {
+                            if (rt != model.Id.ToString())
+                            {
+                                ret += "," + rt;
+                            }
+                        }
+                    }
+
+                    dt.Routes = ret;
+                    DB.DepartureTimeRepository.Update(dt);
+                }
+            }
+
+            DB.Complete();
+
+            return Ok();
+
+        }
+
         // DELETE: api/DepartureTimes/5
         [ResponseType(typeof(DepartureTime))]
         public IHttpActionResult DeleteDepartureTime(int id)
