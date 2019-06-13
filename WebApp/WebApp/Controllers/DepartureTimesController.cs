@@ -7,6 +7,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -272,6 +273,53 @@ namespace WebApp.Controllers
 
             return Ok();
 
+        }
+
+        [HttpPost]
+        [Route("DeleteRoute/{id}")]
+        public IHttpActionResult DeleteRoute(int id)
+        {
+            Route route = DB.RouteRepository.Get(id);
+
+            var stations = route.Stations.Split(':');
+
+            for(int i=1; i<stations.Count(); i++)
+            {
+                var station = DB.StationRepository.Find(s => s.Name == stations[i]).FirstOrDefault();
+                DB.StationRepository.Remove(station);
+            }
+
+            DB.RouteRepository.Remove(route);
+
+            DB.Complete();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("SendMail")]
+        public IHttpActionResult SendMail(string email)
+        {
+            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", email);
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = true;
+            client.Credentials = new NetworkCredential("bid.incorporated.ns@gmail.com", "B1i2d3i4n5c6");
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+            mail.Subject = "Ticket information";
+            mail.Body = $"";
+            try
+            {
+                client.Send(mail);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // DELETE: api/DepartureTimes/5
