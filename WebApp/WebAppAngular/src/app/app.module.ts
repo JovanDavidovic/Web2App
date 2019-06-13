@@ -30,6 +30,7 @@ import { CreateDepartureTimeComponent } from './create-departure-time/create-dep
 import { ViewDepartureTimeComponent } from './view-departure-time/view-departure-time.component';
 import { DeleteDepartureTimeComponent } from './delete-departure-time/delete-departure-time.component';
 import { DeleteRouteComponent } from './delete-route/delete-route.component';
+import { InputMailComponent } from './input-mail/input-mail.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -75,7 +76,8 @@ const routes: Routes = [
     CreateDepartureTimeComponent,
     ViewDepartureTimeComponent,
     DeleteDepartureTimeComponent,
-    DeleteRouteComponent
+    DeleteRouteComponent,
+    InputMailComponent
   ],
   imports: [
     BrowserModule,

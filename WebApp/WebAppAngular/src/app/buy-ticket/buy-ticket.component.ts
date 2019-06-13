@@ -39,7 +39,7 @@ export class BuyTicketComponent implements OnInit {
 
     if (localStorage.getItem('name') == "undefined" || localStorage.getItem('name') == null) {
       console.log("not registered");
-      this.router.navigate(["home"]);
+      this.router.navigate(["inputMail"]);
     }
     else {
       this.vu.getUserByUsername(localStorage.getItem('name')).subscribe(data => {
@@ -56,7 +56,7 @@ export class BuyTicketComponent implements OnInit {
       },
         err => {
           console.log("not registered");
-          this.router.navigate(["home"]);
+          this.router.navigate(["inputMail"]);
         });
     }
   }
