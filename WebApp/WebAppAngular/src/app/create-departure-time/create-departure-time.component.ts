@@ -32,7 +32,7 @@ export class CreateDepartureTimeComponent implements OnInit {
   constructor(private fb: FormBuilder, private mapService: MapService, private router: Router) { }
 
   ngOnInit() {
-    this.mapService.getAllRoutes().subscribe(data => {
+    this.mapService.getAllRoutes("Urban").subscribe(data => {
       console.log(data);
 
       data.forEach(element => {
@@ -43,7 +43,7 @@ export class CreateDepartureTimeComponent implements OnInit {
       console.log(this.routeNames);
     });
   }
-
+  
   createDT() {
     this.mapService.createDepartureTime(this.createDepartureTtimeForm.value).subscribe(data => {
       this.router.navigate(["home"]);

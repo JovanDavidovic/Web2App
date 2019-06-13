@@ -51,33 +51,35 @@
             </div>
           </div>
           <div class="input-group">
-            <div class="rs-select2 js-select-simple select--no-search" *ngIf="jwt.getRole() == 'Admin'> 
-                <font size=" 3" color="white">Area</font>
-              <select formControlName="acctype" style="background-color: black; color: white">
+            <div class="rs-select2 js-select-simple select--no-search" *ngIf="jwt.getRole() == 'Admin'">
+              <font size=" 3" color="white">Area</font>
+              <select formControlName="area" style="background-color: black; color: white">
                 <option selected="selected">Urban</option>
                 <option>Suburban</option>
               </select>
               <div class="select-dropdown"></div>
             </div>
+          </div>
           <div class="p-t-10">
             <button class="btn btn--pill btn--green" type="submit" [disabled]="addNameForm.invalid">Create
               route</button>
           </div>
         </form>
-        <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
-          <font size="3" color="white">Select urban route</font>
-          <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
-            <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
-          </select>
-          <noscript> <input type="submit" value="Submit"></noscript>
-        </form>
-        <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
-          <font size="3" color="white">Select suburban route </font>
-          <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
-            <option *ngFor="let routeName of routeNames2" [value]="routeName">{{routeName}}</option>
-          </select>
-          <noscript> <input type="submit" value="Submit"></noscript>
-        </form>
+            <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
+              <font size="3" color="white">Select urban route</font>
+              <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
+                <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
+              </select>
+              <noscript> <input type="submit" value="Submit"></noscript>
+            </form>
+            <br>
+            <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
+              <font size="3" color="white">Select suburban route </font>
+              <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
+                <option *ngFor="let routeName of routeNames2" [value]="routeName">{{routeName}}</option>
+              </select>
+              <noscript> <input type="submit" value="Submit"></noscript>
+            </form>
       </div>
     </div>
   </div>
