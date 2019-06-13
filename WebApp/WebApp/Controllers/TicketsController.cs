@@ -40,6 +40,7 @@ namespace WebApp.Controllers
             this.DB = db;
         }
 
+        [AllowAnonymous]
         // GET: api/Tickets
         public IEnumerable<Ticket> GetTickets()
         {

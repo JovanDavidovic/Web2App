@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     if(!this.jwt.isTokenValid()){
       localStorage.jwt = undefined;
     }
-    if (this.jwt.getRole() == "AppUser") {
+    else if (this.jwt.getRole() == "AppUser") {
       this.modi.beforeModify(this.jwt.getMail()).subscribe(data => {
 
         localStorage.name = data.UserName;

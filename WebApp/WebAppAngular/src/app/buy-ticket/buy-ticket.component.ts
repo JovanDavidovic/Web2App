@@ -27,15 +27,17 @@ export class BuyTicketComponent implements OnInit {
       console.log(data);
 
       this.prices.push({ ticketType: "Hour", price: data.Hour });
-      this.prices.push({ ticketType: "Day", price: data.Day });
-      this.prices.push({ ticketType: "Month", price: data.Month });
-      this.prices.push({ ticketType: "Year", price: data.Year });
+      if(this.jwt.isTokenValid()) {
+        this.prices.push({ ticketType: "Day", price: data.Day });
+        this.prices.push({ ticketType: "Month", price: data.Month });
+        this.prices.push({ ticketType: "Year", price: data.Year });
+      }
     });
   }
 
   onSelect(tp: TicketPriceModel): void {
 
-    if (localStorage.getItem('name') == undefined || localStorage.getItem('name') == null) {
+    if (localStorage.getItem('name') == "undefined" || localStorage.getItem('name') == null) {
       console.log("not registered");
       this.router.navigate(["home"]);
     }

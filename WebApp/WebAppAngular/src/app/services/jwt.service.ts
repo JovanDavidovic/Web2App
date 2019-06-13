@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class JwtService {
 
     getRole(): string {
-        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined) {
+        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == "undefined") {
             return "unregistered";
         }
         let retData = localStorage.getItem('jwt');
@@ -18,7 +18,7 @@ export class JwtService {
     }
 
     getMail(): string {
-        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined) {
+        if (localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == "undefined") {
             return "mail";
         }
         let retData = localStorage.getItem('jwt');
@@ -31,7 +31,7 @@ export class JwtService {
 
     isTokenValid(): boolean {
 
-        if(localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == undefined)
+        if(localStorage.getItem('jwt') == null || localStorage.getItem('jwt') == "undefined")
         {
             return false;
         }

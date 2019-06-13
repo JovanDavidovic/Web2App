@@ -65,21 +65,21 @@
               route</button>
           </div>
         </form>
-            <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
-              <font size="3" color="white">Select urban route</font>
-              <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
-                <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
-              </select>
-              <noscript> <input type="submit" value="Submit"></noscript>
-            </form>
-            <br>
-            <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
-              <font size="3" color="white">Select suburban route </font>
-              <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
-                <option *ngFor="let routeName of routeNames2" [value]="routeName">{{routeName}}</option>
-              </select>
-              <noscript> <input type="submit" value="Submit"></noscript>
-            </form>
+        <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
+          <font size="3" color="white">Select urban route</font>
+          <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
+            <option *ngFor="let routeName of routeNames" [value]="routeName">{{routeName}}</option>
+          </select>
+          <noscript> <input type="submit" value="Submit"></noscript>
+        </form>
+        <br>
+        <form [formGroup]="selectRouteForm" (ngSubmit)="selectRoute()" *ngIf="jwt.getRole() != 'Admin'">
+          <font size="3" color="white">Select suburban route </font>
+          <select style="background-color: black; color: white " (change)="selectRoute($event.target.value)">
+            <option *ngFor="let routeName of routeNames2" [value]="routeName">{{routeName}}</option>
+          </select>
+          <noscript> <input type="submit" value="Submit"></noscript>
+        </form>
       </div>
     </div>
   </div>
