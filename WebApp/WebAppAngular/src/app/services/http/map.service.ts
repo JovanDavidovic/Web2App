@@ -13,8 +13,8 @@ export class MapService extends BaseHttpService<any>{
         return super.post(stations);
     }
 
-    getAllRoutes() : Observable<any>{
-        this.specificUrl = "/api/DepartureTime/GetRoutes";
+    getAllRoutes(area: string) : Observable<any>{
+        this.specificUrl = "/api/DepartureTime/GetRoutes/" + area;
 
         return super.getAll();
     }

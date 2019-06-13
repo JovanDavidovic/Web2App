@@ -22,9 +22,12 @@ export class MapComponent implements OnInit {
   public zoom: number;
   stations: RouteModel = new RouteModel();
   routeNames: string[] = [];
+  routeNames2: string[] = [];
 
   addNameForm = this.fb.group({
     name: ['',
+      [Validators.required]],
+    area: ['',
       [Validators.required]]
   });
 
@@ -41,7 +44,7 @@ export class MapComponent implements OnInit {
 
     this.polyline = new Polyline([], 'blue', { url: "assets/busicon.png", scaledSize: { width: 50, height: 50 } });
   
-    this.mapService.getAllRoutes().subscribe(data => {
+    this.mapService.getAllRoutes("Urban").subscribe(data => {
       console.log(data);
 
       data.forEach(element => {
@@ -49,7 +52,16 @@ export class MapComponent implements OnInit {
         this.routeNames.push(element.Name);
 
       });
-      console.log(this.routeNames);
+    });
+
+    this.mapService.getAllRoutes("Suburban").subscribe(data => {
+      console.log(data);
+
+      data.forEach(element => {
+
+        this.routeNames2.push(element.Name);
+
+      });
     });
   }
 
@@ -68,6 +80,7 @@ export class MapComponent implements OnInit {
 
   createRoute() {
     this.stations.name = this.addNameForm.get('name').value;
+    this.stations.area = this.addNameForm.get('area').value;
     this.mapService.createRoute(this.stations).subscribe(data => {
       console.log("poslata ruta");
     });
