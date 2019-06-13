@@ -219,4 +219,15 @@ namespace WebApp.Models
         [Display(Name = "RouteName")]
         public int RouteName { get; set; }
     }
+
+    public class GetDepartureTimeBindingModel
+    {
+        [Required]
+        [Display(Name = "Id")]
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "DayType")]
+        public string DayType { get; set; }
+
+    }
 }

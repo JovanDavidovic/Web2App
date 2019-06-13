@@ -334,6 +334,15 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (DataBase.PassengerRepository.Find(p => p.Id == model.Email).FirstOrDefault() == null)
+            {
+                return BadRequest("User with this email already exists.");
+            }
+
+            if (DataBase.PassengerRepository.Find(p => p.UserName == model.Username).FirstOrDefault() == null)
+            {
+                return BadRequest("User with this username already exists.");
+            }
 
             PassengerType rowInTable = null;
             Passenger user = null;

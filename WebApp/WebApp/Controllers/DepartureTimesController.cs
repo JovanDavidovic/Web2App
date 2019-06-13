@@ -132,7 +132,16 @@ namespace WebApp.Controllers
 
             for (int i = 1; i < stations.Count(); i++)
             {
-                var station = new Station() { Name = "Station" + random.Next(1, 9999).ToString(), CoordinatesX = float.Parse(stations[i].Split(':')[0]), CoordinatesY = float.Parse(stations[i].Split(':')[1]), Address = "Address" };
+                int num;
+                while (true)
+                {
+                    num = random.Next(1, 9999);
+                    if (DB.StationRepository.Find(s => s.Name == ("Station" + num.ToString())).FirstOrDefault() == null)
+                    {
+                        break;
+                    }
+                }
+                var station = new Station() { Name = "Station" + num.ToString(), CoordinatesX = float.Parse(stations[i].Split(':')[0]), CoordinatesY = float.Parse(stations[i].Split(':')[1]), Address = "Address" };
                 DB.StationRepository.Add(station);
                 if (newRoute.Stations == null)
                 {
@@ -187,6 +196,33 @@ namespace WebApp.Controllers
             }
 
             return Ok(rbm);
+        }
+
+        [HttpGet]
+        [Route("GetExactDepartureTime/{id}")]
+        public IHttpActionResult GetExactDepartureTime(GetDepartureTimeBindingModel model)
+        {
+            var departureTimes = DB.DepartureTimeRepository.GetAll();
+            string ret = "";
+
+            foreach (DepartureTime dt in departureTimes)
+            {
+                if (DB.DayTypeRepository.Get(dt.DayTypeId).Type == model.DayType)
+                {
+                    var routes = dt.Routes.Split(',');
+
+                    foreach (var rt in routes)
+                    {
+                        if (DB.RouteRepository.Find(r => r.RouteId.ToString() == rt).FirstOrDefault() != null)
+                        {
+                            ret += "," + dt.Time;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return Ok(ret);
         }
 
         // DELETE: api/DepartureTimes/5
