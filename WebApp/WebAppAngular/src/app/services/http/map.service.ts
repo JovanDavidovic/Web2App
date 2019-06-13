@@ -4,6 +4,7 @@ import { RouteModel } from 'src/app/models/route-model';
 import { Observable } from 'rxjs';
 import { DepartureTimeModel } from 'src/app/models/departure-time-model';
 import { GetDepartureTimeModel } from 'src/app/models/get-departure-time-model';
+import { DeleteDepartureTimeModel } from 'src/app/models/delete-departure-time-model';
 
 @Injectable()
 export class MapService extends BaseHttpService<any>{
@@ -33,8 +34,14 @@ export class MapService extends BaseHttpService<any>{
 
     }
 
-    sendRoutForDepartureTimes(model: GetDepartureTimeModel): Observable<any> {
+    sendRoutForDepartureTimes(model: GetDepartureTimeModel) : Observable<any> {
         this.specificUrl = "/api/DepartureTime/GetExactDepartureTime";
+
+        return super.post(model);
+    }
+
+    deleteDepartureTime(model: DeleteDepartureTimeModel) : Observable<any> {
+        this.specificUrl = "/api/DepartureTime/DeleteDepartureTime";
 
         return super.post(model);
     }

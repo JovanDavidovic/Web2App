@@ -23,6 +23,8 @@
           <a routerLink="/viewDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() != 'Controller'">View departure time</a>
           <br />
           <a routerLink="/createDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Create departure time</a>
+          <br />
+          <a routerLink="/deleteDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Delete departure time</a>
         </nav>
 
       </div>

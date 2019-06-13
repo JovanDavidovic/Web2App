@@ -112,7 +112,14 @@ namespace WebApp.Controllers
             }
             else
             {
-                departure.Routes += "," + departureTime.RouteName.ToString();
+                if (departure.Routes == "")
+                {
+                    departure.Routes = departureTime.RouteName.ToString();
+                }
+                else
+                {
+                    departure.Routes += "," + departureTime.RouteName.ToString();
+                }
                 DB.DepartureTimeRepository.Update(departure);
             }
 
@@ -249,6 +256,11 @@ namespace WebApp.Controllers
                                 ret += "," + rt;
                             }
                         }
+                    }
+
+                    if(ret[0] == ',')
+                    {
+                        ret = ret.Remove(0, 1);
                     }
 
                     dt.Routes = ret;

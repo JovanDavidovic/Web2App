@@ -28,6 +28,7 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MapComponent } from './map/map.component';
 import { CreateDepartureTimeComponent } from './create-departure-time/create-departure-time.component';
 import { ViewDepartureTimeComponent } from './view-departure-time/view-departure-time.component';
+import { DeleteDepartureTimeComponent } from './delete-departure-time/delete-departure-time.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path: "map", component: MapComponent},
   {path: "createDepartureTime", component: CreateDepartureTimeComponent, canActivate: [AuthGuard]},
   {path: "viewDepartureTime", component: ViewDepartureTimeComponent},
+  {path: "deleteDepartureTime", component: DeleteDepartureTimeComponent, canActivate: [AuthGuard]},
   {path:"", component: HomeComponent, pathMatch:"full"}
 ]
 
@@ -69,7 +71,8 @@ const routes: Routes = [
     BuyTicketComponent,
     MapComponent,
     CreateDepartureTimeComponent,
-    ViewDepartureTimeComponent
+    ViewDepartureTimeComponent,
+    DeleteDepartureTimeComponent
   ],
   imports: [
     BrowserModule,
