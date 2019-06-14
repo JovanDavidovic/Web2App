@@ -300,9 +300,11 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("SendMail")]
-        public IHttpActionResult SendMail(string email)
+        public IHttpActionResult SendMail(GetDepartureTimeBindingModel email)
         {
-            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", email);
+            string tmp = email.DayType;
+
+            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", tmp);
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;

@@ -42,6 +42,17 @@ export class CreateDepartureTimeComponent implements OnInit {
       });
       console.log(this.routeNames);
     });
+
+    this.mapService.getAllRoutes("Suburban").subscribe(data => {
+      console.log(data);
+
+      data.forEach(element => {
+
+        this.routeNames.push(element.Name);
+
+      });
+      console.log(this.routeNames);
+    });
   }
   
   createDT() {

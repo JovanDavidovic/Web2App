@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { DepartureTimeModel } from 'src/app/models/departure-time-model';
 import { GetDepartureTimeModel } from 'src/app/models/get-departure-time-model';
 import { DeleteDepartureTimeModel } from 'src/app/models/delete-departure-time-model';
+import { TicketPriceModel } from 'src/app/models/ticket-price-model';
 
 @Injectable()
 export class MapService extends BaseHttpService<any>{
@@ -55,6 +56,9 @@ export class MapService extends BaseHttpService<any>{
     sendMail(email: string) : Observable<any> {
         this.specificUrl = "/api/DepartureTime/SendMail";
 
-        return super.post(email);
+        let model = new GetDepartureTimeModel();
+        model.dayType = email;
+
+        return super.post(model);
     }
 }
