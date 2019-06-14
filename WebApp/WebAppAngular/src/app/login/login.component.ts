@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.jwt = undefined;
+    localStorage.name = undefined;
   }
 
   login() {

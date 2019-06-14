@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -224,7 +225,26 @@ namespace WebApp.Controllers
             DB.PassengerRepository.Update(deniedPassenger);
             DB.Complete();
 
-            return Ok();
+            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", passenger.Email);
+            SmtpClient client = new SmtpClient();
+            client.Port = 587;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = true;
+            client.Credentials = new NetworkCredential("bid.incorporated.ns@gmail.com", "B1i2d3i4n5c6");
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+            mail.Subject = "Ticket information";
+            mail.Body = $"";
+            try
+            {
+                client.Send(mail);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
