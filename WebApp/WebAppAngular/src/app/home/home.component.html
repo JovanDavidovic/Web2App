@@ -28,8 +28,12 @@
           <br />
           <a routerLink="/deleteDepartureTime" routerLinkActive="active" *ngIf="jwt.getRole() == 'Admin' ">Delete departure time</a>
           
-
-          <br /><br /><br />
+          <br />
+          <br />
+          <a routerLink="/register" routerLinkActive="active" *ngIf="jwt.getRole() == 'unregistered' ">Register</a>
+          <br />
+          <a routerLink="/login" routerLinkActive="active" *ngIf="jwt.getRole() == 'unregistered' ">Log in</a>
+          <br />
           <a routerLink="/login" routerLinkActive="active" *ngIf="jwt.getRole() != 'unregistered' ">Log out</a>
         </nav>
 

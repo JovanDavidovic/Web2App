@@ -225,17 +225,17 @@ namespace WebApp.Controllers
             DB.PassengerRepository.Update(deniedPassenger);
             DB.Complete();
 
-            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", passenger.Email);
+            MailMessage mail = new MailMessage("dunjaandjovan@gmail.com", deniedPassenger.Email);
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = true;
-            client.Credentials = new NetworkCredential("bid.incorporated.ns@gmail.com", "B1i2d3i4n5c6");
+            client.Credentials = new NetworkCredential("dunjaandjovan@gmail.com", "Jova123.");
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.EnableSsl = true;
             client.Host = "smtp.gmail.com";
-            mail.Subject = "Ticket information";
-            mail.Body = $"";
+            mail.Subject = "Account validation";
+            mail.Body = $"Your account is activated successfully. Best regards! :)";
             try
             {
                 client.Send(mail);

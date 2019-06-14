@@ -290,6 +290,34 @@ namespace WebApp.Controllers
                 DB.StationRepository.Remove(station);
             }
 
+            var depTimes = DB.DepartureTimeRepository.GetAll().ToList();
+            foreach(var time in depTimes)
+            {
+                var routes = time.Routes.Split(',');
+                string ret = "";
+
+                foreach (var rt in routes)
+                {
+                    if (rt != route.RouteId.ToString())
+                    {
+                        ret += "," + rt;
+                    }
+                }
+
+                try
+                {
+
+                    if (ret[0] == ',')
+                    {
+                        ret = ret.Remove(0, 1);
+                    }
+                }
+                catch { }
+
+                time.Routes = ret;
+                DB.DepartureTimeRepository.Update(time);
+            }
+
             DB.RouteRepository.Remove(route);
 
             DB.Complete();
@@ -304,17 +332,17 @@ namespace WebApp.Controllers
         {
             string tmp = email.DayType;
 
-            MailMessage mail = new MailMessage("bid.incorporated.ns@gmail.com", tmp);
+            MailMessage mail = new MailMessage("dunjaandjovan@gmail.com", tmp);
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = true;
-            client.Credentials = new NetworkCredential("bid.incorporated.ns@gmail.com", "B1i2d3i4n5c6");
+            client.Credentials = new NetworkCredential("dunjaandjovan@gmail.com", "Jova123.");
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.EnableSsl = true;
             client.Host = "smtp.gmail.com";
             mail.Subject = "Ticket information";
-            mail.Body = $"";
+            mail.Body = $"You bought hour ticket successfully. Best regards! :)";
             try
             {
                 client.Send(mail);
